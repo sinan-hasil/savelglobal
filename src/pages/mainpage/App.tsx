@@ -716,82 +716,70 @@ const App = () => {
         </Container>
       </div>
 
-      {/* <div className="back-img" style={{backgroundImage: `url(${backgroundImage})`}}>
-        <Container className="back-conta py-5">
-          <Row className="mt-5">
-            <Col onMouseEnter={() => changeBackground(imgCardb, 1)}>
-            <img src={imgCard} className="img-one img-ortak" />
-            </Col>
-            <Col onMouseEnter={() => changeBackground(imgCardb, 2)}>
-            <img src={istasyon} className="img-one img-ortak" />
-            </Col>
-            <Row>
-              <Col onMouseEnter={() => changeBackground(imgCardb, 3)}>
-              <img src={otomasyon} className="img-three img-ortak" />
-              </Col>
-              <Col onMouseEnter={() => changeBackground(imgCardb, 4)}>
-              <img src={proje} className="img-three img-ortak" />
-              </Col>
-            </Row>
-          </Row>
-        </Container> */}
-
       <div
-        className="back-img"
+        className="back-img py-5"
         style={{
           backgroundImage: `url(${backgroundImage})`,
           transition: "0.3s",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover"
         }}
       >
-        <Container>
-          <Row className="first-row">
-            <Col
-              xs={12}
-              sm={12}
-              md={6}
-              lg={6}
-              className="col-1"
-              onMouseEnter={() => changeBackground(imgCardb, 1)}
-              style={{
-                backgroundColor: selectedButton === 1 ? "" : "",
-              }}
-            >
-              <img src={imgCard} className="img-one img-ortak" />
-            </Col>
-            <Col
-              xs={12}
-              sm={12}
-              md={6}
-              lg={6}
-              className="col-1"
-              onMouseEnter={() => changeBackground(istasyonb, 2)}
-            >
-              <img src={istasyon} className="img-two img-ortak" />
-            </Col>
-          </Row>
-          <Row>
-            <Col
-              xs={12}
-              sm={12}
-              md={6}
-              lg={6}
-              className="col-2"
-              onMouseEnter={() => changeBackground(otomasyonb, 3)}
-            >
-              <img src={otomasyon} className="img-three img-ortak" />
-            </Col>
-            <Col
-              xs={12}
-              sm={12}
-              md={6}
-              lg={6}
-              className="col-2"
-              onMouseEnter={() => changeBackground(projeb, 4)}
-            >
-              <img src={proje} className="img-four img-ortak" />
-            </Col>
-          </Row>
-        </Container>
+        <Container className="h-100 d-flex align-items-center">
+        <Row className="h-100 w-100 first-row d-flex justify-content-center align-items-center">
+          <Col
+            xs={12}
+            sm={12}
+            md={6}
+            lg={6}
+            className="p-0 d-flex justify-content-center align-items-center image-container"
+            onMouseEnter={() => changeBackground(imgCardb, 1)}
+            style={{
+              backgroundColor: selectedButton === 1 ? "" : "",
+            }}
+          >
+            <div className="image-wrapper">
+              <img src={imgCard} className="img-fluid img-ortak" alt="Image 1" />
+            </div>
+          </Col>
+          <Col
+            xs={12}
+            sm={12}
+            md={6}
+            lg={6}
+            className="p-0 d-flex justify-content-center align-items-center image-container"
+            onMouseEnter={() => changeBackground(istasyonb, 2)}
+          >
+            <div className="image-wrapper">
+              <img src={istasyon} className="img-fluid img-ortak" alt="Image 2" />
+            </div>
+          </Col>
+          <Col
+            xs={12}
+            sm={12}
+            md={6}
+            lg={6}
+            className="p-0 d-flex justify-content-center align-items-center image-container"
+            onMouseEnter={() => changeBackground(otomasyonb, 3)}
+          >
+            <div className="image-wrapper">
+              <img src={otomasyon} className="img-3 img-fluid img-ortak" alt="Image 3" />
+            </div>
+          </Col>
+          <Col
+            xs={12}
+            sm={12}
+            md={6}
+            lg={6}
+            className="p-0 d-flex justify-content-center align-items-center image-container"
+            onMouseEnter={() => changeBackground(projeb, 4)}
+          >
+            <div className="image-wrapper">
+              <img src={proje} className="img-4 img-fluid img-ortak" alt="Image 4" />
+            </div>
+          </Col>
+        </Row>
+      </Container>
       </div>
 
       <footer className="bg-dark py-4">
