@@ -69,6 +69,10 @@
   transform: scale(1.05);
 }
 
+.back-img {
+  margin-top: 50px !important;
+}
+
 .image-container {
   height: 50vh;
   overflow: hidden;
