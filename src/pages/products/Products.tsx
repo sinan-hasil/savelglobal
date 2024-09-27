@@ -1,17 +1,74 @@
+import { useState } from "react";
 import { Button, Nav, Navbar, Offcanvas } from "react-bootstrap";
 import logo from "../../icons/logopng.png";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useState } from "react";
-import { IoMdArrowDropup } from "react-icons/io";
-import { IoMdArrowDropdown } from "react-icons/io";
+import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
 import "./products.css";
 
+type ProductItem = string[] | { [key: string]: string[] };
+
+type Product = {
+  [key: string]: ProductItem;
+};
+
+const products: Product[] = [
+  {
+    "Taşınabilir İstasyon": ["Konteyner Tipi", "Römork Tipi"],
+  },
+  {
+    Dispenserler: {
+      "Akaryakıt Dispenserleri": [
+        "7 Serisi Akaryakıt Pompası",
+        "6 Serisi Akaryakıt Pompası",
+        "5 Serisi Akaryakıt Pompası",
+        "3 Serisi Akaryakıt Pompası",
+        "1 Serisi Akaryakıt Pompası",
+      ],
+      "LPG Dispenserleri": [
+        "7 Serisi LPG Dispenseri",
+        "3 Serisi LPG Dispenseri",
+        "2 Serisi LPG Dispenseri",
+      ],
+    },
+  },
+  {
+    Tanklar: ["Akaryakıt Tankları", "LPG Tankları", "Jeneratör Tankları"],
+  },
+  {
+    Otomasyon: ["..."],
+  },
+  {
+    Endüstriyel: [
+      "Jenetatör",
+      "Yakıt Kontrol Sistemleri",
+      "İstasyon Kurulumu",
+      "Proje Danışmanlık ve Mühendislik",
+      "Servis Hizmetleri",
+    ],
+  },
+  {
+    "Savel Shop": ["..."],
+  },
+];
+
 const Products = () => {
-  const [show, setShow] = useState(false);
-  const [drop, setDrop] = useState(true);
+  const [show, setShow] = useState<boolean>(false);
+  const [showdrop, setShowDrop] = useState(true);
+  const [openCategories, setOpenCategories] = useState<{ [key: string]: boolean }>({});
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const dropShow = () => setDrop(!drop);
+
+  const toggleDrop = () => setShowDrop(!showdrop);
+
+  const toggleCategory = (category: string) => {
+    setOpenCategories((prev) => ({
+      ...prev,
+      [category]: !prev[category],
+    }));
+    setSelectedCategory(category);
+  };
 
   return (
     <>
@@ -28,41 +85,76 @@ const Products = () => {
                 <Button className="z-3" variant="outline" onClick={handleShow}>
                   <RxHamburgerMenu className="text-white" size={25} />
                 </Button>
-
-                <Offcanvas show={show} onHide={handleClose}>
-                  <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-                  </Offcanvas.Header>
-                  <Offcanvas.Body>
-                    Some text as placeholder. In real life you can have the
-                    elements you have chosen. Like, text, images, lists, etc.
-                  </Offcanvas.Body>
-                </Offcanvas>
               </Nav.Link>
             </Nav>
           </Navbar.Text>
         </Navbar.Collapse>
       </Navbar>
 
+      <Offcanvas show={show} onHide={handleClose}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          Some text as placeholder. In real life you can have the elements you
+          have chosen. Like, text, images, lists, etc.
+        </Offcanvas.Body>
+      </Offcanvas>
+
       <div className="content">
         <div className="nav-drop">
-          <div className="drop-btn">
+          <div onClick={toggleDrop} className="drop-btn">
             <p>ÜRÜN LİSTESİ</p>
-            <p onClick={dropShow}>{drop ? (
-              <IoMdArrowDropup />
+            {showdrop ? (
+              <IoMdArrowDropup className="up-icon" />
             ) : (
               <IoMdArrowDropdown />
-            )}</p>
+            )}
           </div>
-          <div className="drop-content">
-          {drop ? (
-            <>
-              <div>AdBlue Ekipmanları</div>
-            </>
-          ) : null}
-          </div>
+          {showdrop && (
+            <div className="drop-content">
+              {products.map((product, index) => {
+                const categoryName = Object.keys(product)[0];
+                return (
+                  <div key={index}>
+                    <div onClick={() => toggleCategory(categoryName)} className="category-item">
+                      <p>{categoryName}</p>
+                      {openCategories[categoryName] ? (
+                        <p><IoMdArrowDropup /></p>
+                      ) : (
+                        <p><IoMdArrowDropdown /></p>
+                      )}
+                    </div>
+                    {openCategories[categoryName] && (
+                      <div className="product-list">
+                        {Array.isArray(product[categoryName])
+                          ? (product[categoryName] as string[]).map((item, idx) => (
+                              <div key={idx}>{item}</div>
+                            ))
+                          : Object.entries(product[categoryName]).map(([subCategory, items]) => (
+                              <div key={subCategory}>
+                                <strong>{subCategory}</strong>
+                                
+                                  {(items as string[]).map((item, idx) => (
+                                    <p key={idx}>{item}</p>
+                                  ))}
+                              </div>
+                            ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
-        <div className="output">asd</div>
+        <div className="output">
+          {selectedCategory ? (
+            <p>Seçilen kategori: {selectedCategory}</p>
+          ) : (
+            <p>Seçilen ürün detayları burada gösterilebilir</p>
+          )}
+        </div>
       </div>
     </>
   );

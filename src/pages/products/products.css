@@ -21,10 +21,17 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 10px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 .content .nav-drop .drop-btn p {
   margin: 0;
+}
+.content .nav-drop .drop-content .category-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
 }
 .content .output {
   flex: 1;

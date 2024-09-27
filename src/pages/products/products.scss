@@ -15,15 +15,25 @@ nav {
     max-width: 400px;
     min-width: 400px;
     border-right: 2px solid black;
-    .drop-btn{
-        border-bottom: 1px solid black;
+    .drop-btn {
+      border-bottom: 1px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      cursor: pointer;
+      p {
+        margin: 0;
+      }
+    }
+
+    .drop-content {
+      .category-item{
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 5px 10px;
-        p{
-            margin: 0;
-        }
+        padding: 10px 20px;
+      }
     }
   }
 
