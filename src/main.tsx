@@ -7,6 +7,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css"
 import Root from './pages/root/Root.tsx';
 import App from './pages/mainpage/App.tsx';
+import Products from './pages/products/Products.tsx';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/test",
     element: <App />
+  },
+  {
+    path: "/products",
+    element: <Products />
   }
 ]);
 

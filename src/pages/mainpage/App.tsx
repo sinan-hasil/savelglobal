@@ -41,6 +41,7 @@ const App = () => {
   const [backgSubtitle, setBackgSubtitle] = useState(
     "Her Yerde Yakıt İstasyonu Çözümü: Güvenli, Hızlı, Taşınabilir!"
   );
+  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
