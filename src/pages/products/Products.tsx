@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, Nav, Navbar, Offcanvas } from "react-bootstrap";
 import logo from "../../icons/logopng.png";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -55,11 +55,11 @@ const Products = () => {
   const [show, setShow] = useState<boolean>(false);
   const [showdrop, setShowDrop] = useState(true);
   const [openCategories, setOpenCategories] = useState<{ [key: string]: boolean }>({});
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("Taşınabilir İstasyon");
+  const [categoryItems, setCategoryItems] = useState<string[]>([]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   const toggleDrop = () => setShowDrop(!showdrop);
 
   const toggleCategory = (category: string) => {
@@ -69,6 +69,21 @@ const Products = () => {
     }));
     setSelectedCategory(category);
   };
+
+  useEffect(() => {
+    // Seçilen kategoriye göre ürünleri belirle
+    const selectedProduct = products.find(product => Object.keys(product)[0] === selectedCategory);
+    if (selectedProduct) {
+      const categoryName = Object.keys(selectedProduct)[0];
+      const productItems = selectedProduct[categoryName];
+      if (Array.isArray(productItems)) {
+        setCategoryItems(productItems);
+      } else {
+        const subItems = Object.values(productItems).flat();
+        setCategoryItems(subItems);
+      }
+    }
+  }, [selectedCategory]);
 
   return (
     <>
@@ -96,8 +111,7 @@ const Products = () => {
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+          Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
         </Offcanvas.Body>
       </Offcanvas>
 
@@ -134,10 +148,9 @@ const Products = () => {
                           : Object.entries(product[categoryName]).map(([subCategory, items]) => (
                               <div key={subCategory}>
                                 <strong>{subCategory}</strong>
-                                
-                                  {(items as string[]).map((item, idx) => (
-                                    <p key={idx}>{item}</p>
-                                  ))}
+                                {(items as string[]).map((item, idx) => (
+                                  <p key={idx}>{item}</p>
+                                ))}
                               </div>
                             ))}
                       </div>
@@ -149,8 +162,13 @@ const Products = () => {
           )}
         </div>
         <div className="output">
-          {selectedCategory ? (
-            <p>Seçilen kategori: {selectedCategory}</p>
+          <h5>{selectedCategory}</h5>
+          {categoryItems.length > 0 ? (
+            <ul>
+              {categoryItems.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
           ) : (
             <p>Seçilen ürün detayları burada gösterilebilir</p>
           )}
