@@ -1,8 +1,27 @@
 import { useState, useEffect } from "react";
-import { Button, Nav, Navbar, Offcanvas } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  Col,
+  Container,
+  Nav,
+  Navbar,
+  Offcanvas,
+  Row,
+} from "react-bootstrap";
 import logo from "../../icons/logopng.png";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
+import img1 from "../../images/araclar/konteynır tipi.png";
+import img2 from "../../images/araclar/römork tipi.png";
+import img3 from "../../images/araclar/akaryakıt disp seri3.png";
+import img4 from "../../images/araclar/akaryakıt disp seri1.png";
+import img5 from "../../images/araclar/akaryakıt disp seri5.png";
+import img6 from "../../images/araclar/akaryakıt disp seri6.png";
+import img7 from "../../images/araclar/akaryakıt disp seri7.png";
+import img8 from "../../images/araclar/lpg disp seri2.png";
+import img9 from "../../images/araclar/lpg disp seri3.png";
+import img10 from "../../images/araclar/lpg disp seri7.png";
 import "./products.css";
 
 type ProductItem = string[] | { [key: string]: string[] };
@@ -54,8 +73,12 @@ const products: Product[] = [
 const Products = () => {
   const [show, setShow] = useState<boolean>(false);
   const [showdrop, setShowDrop] = useState(true);
-  const [openCategories, setOpenCategories] = useState<{ [key: string]: boolean }>({});
-  const [selectedCategory, setSelectedCategory] = useState<string>("Taşınabilir İstasyon");
+  const [openCategories, setOpenCategories] = useState<{
+    [key: string]: boolean;
+  }>({});
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    "Taşınabilir İstasyon"
+  );
   const [categoryItems, setCategoryItems] = useState<string[]>([]);
 
   const handleClose = () => setShow(false);
@@ -71,8 +94,9 @@ const Products = () => {
   };
 
   useEffect(() => {
-    // Seçilen kategoriye göre ürünleri belirle
-    const selectedProduct = products.find(product => Object.keys(product)[0] === selectedCategory);
+    const selectedProduct = products.find(
+      (product) => Object.keys(product)[0] === selectedCategory
+    );
     if (selectedProduct) {
       const categoryName = Object.keys(selectedProduct)[0];
       const productItems = selectedProduct[categoryName];
@@ -84,6 +108,29 @@ const Products = () => {
       }
     }
   }, [selectedCategory]);
+
+  const productDescriptions: { [key: string]: string } = {
+    "Konteyner Tipi": "Bu taşınabilir istasyon, konteyner tipi bir yapı sunar.",
+    "Römork Tipi":
+      "Römork tipi istasyon, taşınabilir yakıt depolama çözümleri sağlar.",
+    "7 Serisi Akaryakıt Pompası":
+      "Yüksek performanslı 7 Serisi akaryakıt pompası.",
+    "6 Serisi Akaryakıt Pompası":
+      "Daha küçük ölçekli yakıt istasyonları için ideal.",
+  };
+
+  const productImages: { [key: string]: string } = {
+    "Konteyner Tipi": img1,
+    "Römork Tipi": img2,
+    "7 Serisi Akaryakıt Pompası": img3,
+    "6 Serisi Akaryakıt Pompası": img4,
+    "5 Serisi Akaryakıt Pompası": img5,
+    "3 Serisi Akaryakıt Pompası": img6,
+    "1 Serisi Akaryakıt Pompası": img7,
+    "7 Serisi LPG Dispenseri": img8,
+    "3 Serisi LPG Dispenseri": img9,
+    "2 Serisi LPG Dispenseri": img10,
+  };
 
   return (
     <>
@@ -111,7 +158,8 @@ const Products = () => {
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+          Some text as placeholder. In real life you can have the elements you
+          have chosen. Like, text, images, lists, etc.
         </Offcanvas.Body>
       </Offcanvas>
 
@@ -131,28 +179,41 @@ const Products = () => {
                 const categoryName = Object.keys(product)[0];
                 return (
                   <div key={index}>
-                    <div onClick={() => toggleCategory(categoryName)} className="category-item">
+                    <div
+                      onClick={() => toggleCategory(categoryName)}
+                      className="category-item"
+                    >
                       <p>{categoryName}</p>
                       {openCategories[categoryName] ? (
-                        <p><IoMdArrowDropup /></p>
+                        <p>
+                          <IoMdArrowDropup />
+                        </p>
                       ) : (
-                        <p><IoMdArrowDropdown /></p>
+                        <p>
+                          <IoMdArrowDropdown />
+                        </p>
                       )}
                     </div>
                     {openCategories[categoryName] && (
                       <div className="product-list">
                         {Array.isArray(product[categoryName])
-                          ? (product[categoryName] as string[]).map((item, idx) => (
-                              <div key={idx}>{item}</div>
-                            ))
-                          : Object.entries(product[categoryName]).map(([subCategory, items]) => (
-                              <div key={subCategory}>
-                                <strong>{subCategory}</strong>
-                                {(items as string[]).map((item, idx) => (
-                                  <p key={idx}>{item}</p>
-                                ))}
-                              </div>
-                            ))}
+                          ? (product[categoryName] as string[]).map(
+                              (item, idx) => (
+                                <div className="asd" key={idx}>
+                                  {item}
+                                </div>
+                              )
+                            )
+                          : Object.entries(product[categoryName]).map(
+                              ([subCategory, items]) => (
+                                <div key={subCategory}>
+                                  <strong>{subCategory}</strong>
+                                  {(items as string[]).map((item, idx) => (
+                                    <p key={idx}>{item}</p>
+                                  ))}
+                                </div>
+                              )
+                            )}
                       </div>
                     )}
                   </div>
@@ -162,16 +223,39 @@ const Products = () => {
           )}
         </div>
         <div className="output">
-          <h5>{selectedCategory}</h5>
-          {categoryItems.length > 0 ? (
-            <ul>
-              {categoryItems.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          ) : (
-            <p>Seçilen ürün detayları burada gösterilebilir</p>
-          )}
+          <Container>
+            <h5 className="mt-3 text-center">
+              {selectedCategory.toUpperCase()}
+            </h5>
+            <Row className="mt-5">
+              {categoryItems.length > 0 ? (
+                categoryItems.map((item, index) => (
+                  <Col md={4} key={index}>
+                    <Card style={{ width: "18rem" }}>
+                      <Card.Img
+                        className="ms-3"
+                        variant="top"
+                        src={
+                          productImages[item] ||
+                          `https:via.placeholder.com/300x200?text=${item}`
+                        }
+                      />
+                      <Card.Body>
+                        <Card.Title>{item}</Card.Title>
+                        <Card.Text>
+                          {productDescriptions[item] ||
+                            "Bu ürün hakkında bilgi mevcut değil."}
+                        </Card.Text>
+                        <Button variant="primary">Detaylı Bilgi</Button>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                ))
+              ) : (
+                <p>Seçilen ürün detayları burada gösterilebilir</p>
+              )}
+            </Row>
+          </Container>
         </div>
       </div>
     </>
