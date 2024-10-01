@@ -72,25 +72,28 @@ const products: Product[] = [
 
 const Products = () => {
   const [show, setShow] = useState<boolean>(false);
+  const [selectedSubItem, setSelectedSubItem] = useState<string | null>(null);
   const [showdrop, setShowDrop] = useState(true);
-  const [openCategories, setOpenCategories] = useState<{
-    [key: string]: boolean;
-  }>({});
+  const [openCategory, setOpenCategory] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>(
     "Taşınabilir İstasyon"
   );
   const [categoryItems, setCategoryItems] = useState<string[]>([]);
-  // const [selectedItem, setSelectedItem] = useState();
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const toggleDrop = () => setShowDrop(!showdrop);
-  //console.log(products[categoryItems])
+
+  const handleSubItemClick = (item: string) => {
+    setSelectedSubItem(item);
+  };
 
   const toggleCategory = (category: string) => {
-    setOpenCategories((prev) => ({
-      ...prev,
-      [category]: !prev[category],
-    }));
+    if (openCategory === category) {
+      setOpenCategory(null);
+    } else {
+      setOpenCategory(category);
+    }
     setSelectedCategory(category);
   };
 
@@ -132,7 +135,7 @@ const Products = () => {
     "3 Serisi LPG Dispenseri": img9,
     "2 Serisi LPG Dispenseri": img10,
   };
-    
+
   return (
     <>
       <Navbar className="bg-dark">
@@ -185,7 +188,7 @@ const Products = () => {
                       className="category-item"
                     >
                       <p>{categoryName}</p>
-                      {openCategories[categoryName] ? (
+                      {openCategory === categoryName ? (
                         <p>
                           <IoMdArrowDropup />
                         </p>
@@ -195,18 +198,32 @@ const Products = () => {
                         </p>
                       )}
                     </div>
-                    {openCategories[categoryName] && (
+                    {openCategory === categoryName && (
                       <div className="product-list">
                         {Array.isArray(product[categoryName])
                           ? (product[categoryName] as string[]).map(
-                              (item, idx) => <div className="categry-item" key={idx}>{item}</div>
+                              (item, idx) => (
+                                <div 
+                                  className="category-item" 
+                                  key={idx}
+                                  onClick={() => handleSubItemClick(item)}
+                                >
+                                  {item}
+                                </div>
+                              )
                             )
                           : Object.entries(product[categoryName]).map(
                               ([subCategory, items]) => (
                                 <div key={subCategory}>
                                   <strong>{subCategory}</strong>
                                   {(items as string[]).map((item, idx) => (
-                                    <p key={idx}>{item}</p>
+                                    <div 
+                                      key={idx}
+                                      onClick={() => handleSubItemClick(item)}
+                                      className="category-item"
+                                    >
+                                      {item}
+                                    </div>
                                   ))}
                                 </div>
                               )
@@ -222,13 +239,34 @@ const Products = () => {
         <div className="output">
           <Container>
             <h5 className="mt-3 text-center">
-              {selectedCategory.toUpperCase()}
+              {selectedSubItem || selectedCategory.toUpperCase()}
             </h5>
             <Row className="mt-5">
-              {categoryItems.length > 0 ? (
+              {selectedSubItem ? (
+                <Col md={4}>
+                  <Card style={{ width: "18rem" }}>
+                    <Card.Img
+                      className="ms-3"
+                      variant="top"
+                      src={
+                        productImages[selectedSubItem] ||
+                        `https://via.placeholder.com/300x200?text=${selectedSubItem}`
+                      }
+                    />
+                    <Card.Body>
+                      <Card.Title>{selectedSubItem}</Card.Title>
+                      <Card.Text>
+                        {productDescriptions[selectedSubItem] ||
+                          "Bu ürün hakkında bilgi mevcut değil."}
+                      </Card.Text>
+                      <Button variant="primary">Detaylı Bilgi</Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ) : categoryItems.length > 0 ? (
                 categoryItems.map((item, index) => (
                   <Col md={4} key={index}>
-                    <Card style={{ width: "18rem" }}>                      
+                    <Card style={{ width: "18rem" }}>
                       <Card.Img
                         className="ms-3"
                         variant="top"
@@ -243,7 +281,6 @@ const Products = () => {
                           {productDescriptions[item] ||
                             "Bu ürün hakkında bilgi mevcut değil."}
                         </Card.Text>
-                        <Button variant="primary">Detaylı Bilgi</Button>
                       </Card.Body>
                     </Card>
                   </Col>
@@ -253,11 +290,8 @@ const Products = () => {
               )}
             </Row>
           </Container>
-          {categoryItems.map((item, index) => (
-            <div key={index}>{item}</div>
-          ))}
         </div>
-      </div>
+      </div>    
     </>
   );
 };
