@@ -32,6 +32,7 @@ import tank from "../../images/tank.png";
 import endustriHero from "../../images/endustri-hero.jpg";
 import "./style.css";
 import Footer from "../footer/Footer";
+import { Link } from "react-router-dom";
 
 const App = () => {
   const [show, setShow] = useState(false);
@@ -95,15 +96,16 @@ const App = () => {
                     >
                       <RxHamburgerMenu className="text-white" size={25} />
                     </Button>
+                    <Nav.Link className="z-3" as={Link} to={"/products"}>
+                        <Button>Productsa</Button>
+                        </Nav.Link>
 
                     <Offcanvas show={show} onHide={handleClose}>
                       <Offcanvas.Header closeButton>
                         <Offcanvas.Title>Offcanvas</Offcanvas.Title>
                       </Offcanvas.Header>
                       <Offcanvas.Body>
-                        Some text as placeholder. In real life you can have the
-                        elements you have chosen. Like, text, images, lists,
-                        etc.
+                        
                       </Offcanvas.Body>
                     </Offcanvas>
                   </Nav.Link>
