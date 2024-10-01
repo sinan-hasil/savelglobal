@@ -131,7 +131,7 @@ const Products = () => {
     "3 Serisi LPG Dispenseri": img9,
     "2 Serisi LPG Dispenseri": img10,
   };
-
+    
   return (
     <>
       <Navbar className="bg-dark">
@@ -198,11 +198,7 @@ const Products = () => {
                       <div className="product-list">
                         {Array.isArray(product[categoryName])
                           ? (product[categoryName] as string[]).map(
-                              (item, idx) => (
-                                <div className="asd" key={idx}>
-                                  {item}
-                                </div>
-                              )
+                              (item, idx) => <div key={idx}>{item}</div>
                             )
                           : Object.entries(product[categoryName]).map(
                               ([subCategory, items]) => (
@@ -231,13 +227,13 @@ const Products = () => {
               {categoryItems.length > 0 ? (
                 categoryItems.map((item, index) => (
                   <Col md={4} key={index}>
-                    <Card style={{ width: "18rem" }}>
+                    <Card style={{ width: "18rem" }}>                      
                       <Card.Img
                         className="ms-3"
                         variant="top"
                         src={
                           productImages[item] ||
-                          `https:via.placeholder.com/300x200?text=${item}`
+                          `https://via.placeholder.com/300x200?text=${item}`
                         }
                       />
                       <Card.Body>
