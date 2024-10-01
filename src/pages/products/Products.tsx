@@ -80,10 +80,11 @@ const Products = () => {
     "Taşınabilir İstasyon"
   );
   const [categoryItems, setCategoryItems] = useState<string[]>([]);
-
+  // const [selectedItem, setSelectedItem] = useState();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const toggleDrop = () => setShowDrop(!showdrop);
+  //console.log(products[categoryItems])
 
   const toggleCategory = (category: string) => {
     setOpenCategories((prev) => ({
@@ -198,7 +199,7 @@ const Products = () => {
                       <div className="product-list">
                         {Array.isArray(product[categoryName])
                           ? (product[categoryName] as string[]).map(
-                              (item, idx) => <div key={idx}>{item}</div>
+                              (item, idx) => <div className="categry-item" key={idx}>{item}</div>
                             )
                           : Object.entries(product[categoryName]).map(
                               ([subCategory, items]) => (
@@ -252,6 +253,9 @@ const Products = () => {
               )}
             </Row>
           </Container>
+          {categoryItems.map((item, index) => (
+            <div key={index}>{item}</div>
+          ))}
         </div>
       </div>
     </>

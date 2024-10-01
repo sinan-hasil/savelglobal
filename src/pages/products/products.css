@@ -17,26 +17,25 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 15px;
+  border-bottom: 1px solid black;
 }
 .content .nav-drop .drop-btn p, .content .nav-drop .category-item p {
   margin: 0;
 }
+.content .nav-drop .category-item {
+  border: none;
+  cursor: pointer;
+}
 .content .nav-drop .product-list {
   margin-left: 30px;
 }
-.content .nav-drop .product-list .asd {
+.content .nav-drop .product-list .categry-item {
   color: gray;
+  cursor: pointer;
   transition: 0.5s;
 }
-.content .nav-drop .product-list .asd:hover {
-  font-size: 17px;
+.content .nav-drop .product-list .categry-item:hover {
   color: black;
-}
-.content .nav-drop .product-list strong {
-  color: black;
-}
-.content .nav-drop .product-list p {
-  margin-left: 20px;
 }
 .content .output {
   flex: 1;
