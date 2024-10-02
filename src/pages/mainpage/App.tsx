@@ -1,16 +1,12 @@
 import { useState } from "react";
 import {
-  Button,
   Card,
   Col,
   Container,
   Nav,
-  Navbar,
-  Offcanvas,
   Row,
   Tab,
 } from "react-bootstrap";
-import { RxHamburgerMenu } from "react-icons/rx";
 import logo from "../../icons/logopng.png";
 import card1 from "../../images/kendi-uretimimiz.jpeg";
 import card2 from "../../images/yuksek-teknoloji.png";
@@ -31,20 +27,16 @@ import dispenser from "../../images/dispenser.png";
 import tank from "../../images/tank.png";
 import endustriHero from "../../images/endustri-hero.jpg";
 import "./style.css";
-import Footer from "../footer/Footer";
-import { Link } from "react-router-dom";
 
 const App = () => {
-  const [show, setShow] = useState(false);
   const [backgroundImage, setBackgroundImage] = useState(imgCardb);
   const [selectedButton, setSelectedButton] = useState(1);
   const [backgTitle, setBackgTitle] = useState("Taşınabilir İstasyon");
   const [backgSubtitle, setBackgSubtitle] = useState(
     "Her Yerde Yakıt İstasyonu Çözümü: Güvenli, Hızlı, Taşınabilir!"
   );
+
   
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const changeBackground = (image: string, buttonIndex: number) => {
     setBackgroundImage(image);
@@ -78,43 +70,6 @@ const App = () => {
           transition: "0.3s",
         }}
       >
-        <Navbar>
-          <Container>
-            <Navbar.Brand className="z-3">
-              <img src={logo} width={170} alt="Site Logo" />
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse className="justify-content-end">
-              <Navbar.Text>
-                <Nav className="me-auto">
-                  <Nav.Link className="d-flex align-items-center">
-                    <span className="z-3 fs-5 text-white">TR</span>
-                    <Button
-                      className="z-3"
-                      variant="outline"
-                      onClick={handleShow}
-                    >
-                      <RxHamburgerMenu className="text-white" size={25} />
-                    </Button>
-                    <Nav.Link className="z-3" as={Link} to={"/products"}>
-                        <Button variant="outline">Ürünler</Button>
-                        </Nav.Link>
-
-                    <Offcanvas show={show} onHide={handleClose}>
-                      <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-                      </Offcanvas.Header>
-                      <Offcanvas.Body>
-                        
-                      </Offcanvas.Body>
-                    </Offcanvas>
-                  </Nav.Link>
-                </Nav>
-              </Navbar.Text>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-
         <div className="title z-3 w-100 px-5 h-50 d-flex flex-column justify-content-center">
           <Container className="z-3 title-container">
             <h1 className="z-3 text-white">{backgTitle}</h1>
@@ -131,19 +86,21 @@ const App = () => {
                 className="w-100 pt-1 d-flex justify-content-between"
                 variant="outline"
               >
-                <Nav.Item onClick={() =>
-                          changeBackground1(
-                            imgCardb,
-                            1,
-                            "Taşınabilir İstasyon",
-                            "Her Yerde Yakıt İstasyonu Çözümü: Güvenli, Hızlı, Taşınabilir!"
-                          )
-                        }>
-                  <Nav.Link                  
+                <Nav.Item
+                  onClick={() =>
+                    changeBackground1(
+                      imgCardb,
+                      1,
+                      "Taşınabilir İstasyon",
+                      "Her Yerde Yakıt İstasyonu Çözümü: Güvenli, Hızlı, Taşınabilir!"
+                    )
+                  }
+                >
+                  <Nav.Link
                     eventKey="first"
                     className="px-4 d-flex gap-2 justify-content-center flex-column"
                   >
-                    <div  className="d-flex justify-content-center w-100">
+                    <div className="d-flex justify-content-center w-100">
                       <svg
                         width="52"
                         height="52"
@@ -151,7 +108,6 @@ const App = () => {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                         className="z-3"
-                        
                       >
                         <g clip-path="url(#clip0_59_6)">
                           <path
@@ -207,14 +163,16 @@ const App = () => {
                     </p>
                   </Nav.Link>
                 </Nav.Item>
-                <Nav.Item onClick={() =>
-                          changeBackground1(
-                            dispenser,
-                            2,
-                            "Dispenser Çözümleri",
-                            "Dayanıklı, Verimli ve Güvenilir Yakıt Dağıtımı!"
-                          )
-                        }>
+                <Nav.Item
+                  onClick={() =>
+                    changeBackground1(
+                      dispenser,
+                      2,
+                      "Dispenser Çözümleri",
+                      "Dayanıklı, Verimli ve Güvenilir Yakıt Dağıtımı!"
+                    )
+                  }
+                >
                   <Nav.Link
                     eventKey="second"
                     className="px-4 d-flex gap-2 justify-content-center flex-column"
@@ -227,7 +185,6 @@ const App = () => {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                         className="z-3"
-                        
                       >
                         <path
                           d="M26.5213 46.2367C27.3827 46.2367 28.0813 45.5381 28.0813 44.6767V7.27989C28.0813 6.41854 27.3827 5.71989 26.5213 5.71989H7.27977C6.41842 5.71989 5.71977 6.41854 5.71977 7.27989V44.6767C5.71977 45.5381 6.41842 46.2367 7.27977 46.2367H26.5213ZM26.5213 48.3167H7.27977C5.2697 48.3167 3.63977 46.6868 3.63977 44.6767V7.27989C3.63977 5.26982 5.2697 3.63989 7.27977 3.63989H26.5213C28.5314 3.63989 30.1613 5.26982 30.1613 7.27989V44.6767C30.1613 46.6868 28.5314 48.3167 26.5213 48.3167ZM46.256 13.8846V39.2886C46.256 41.7978 44.222 43.8319 41.7127 43.8319C39.2019 43.8319 37.1679 41.7979 37.1679 39.2886C37.1679 38.7142 36.7023 38.2486 36.1279 38.2486C35.5535 38.2486 35.0879 38.7142 35.0879 39.2886C35.0879 42.9466 38.0532 45.9119 41.7111 45.9119C45.3707 45.9119 48.336 42.9466 48.336 39.2886V13.8846C48.336 13.3102 47.8703 12.8446 47.296 12.8446C46.7216 12.8446 46.256 13.3102 46.256 13.8846Z"
@@ -251,14 +208,16 @@ const App = () => {
                     {/* İkon */}
                   </Nav.Link>
                 </Nav.Item>
-                <Nav.Item onClick={() =>
-                          changeBackground1(
-                            tank,
-                            3,
-                            "Yakıt Tankları",
-                            "Güvenli Depolama, Maksimum Dayanıklılık!"
-                          )
-                        }>
+                <Nav.Item
+                  onClick={() =>
+                    changeBackground1(
+                      tank,
+                      3,
+                      "Yakıt Tankları",
+                      "Güvenli Depolama, Maksimum Dayanıklılık!"
+                    )
+                  }
+                >
                   <Nav.Link
                     eventKey="third"
                     className="px-4 d-flex gap-2 justify-content-center flex-column"
@@ -271,7 +230,6 @@ const App = () => {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                         className="z-3"
-                        
                       >
                         <path
                           d="M29.0469 7.71875V9.54688H45.2969V7.71875H29.0469ZM33.2109 11.1719V12.7969H41.1328V11.1719H33.2109ZM6.29688 14.625C5.71289 14.625 5.24002 14.8219 4.76592 15.2367C4.29183 15.6516 3.84394 16.3011 3.47598 17.1289C2.73995 18.785 2.33594 21.125 2.33594 23.4609C2.33594 25.7969 2.73995 28.137 3.47598 29.793C3.84394 30.6209 4.29183 31.2703 4.76582 31.6851C5.24012 32.1 5.71289 32.2969 6.29688 32.2969H6.81027L7.0134 30.4694L7.10379 29.6562H15.24L15.5333 32.2969H18.3828V14.625H6.29688ZM20.2109 14.625V19.2969H24.8828V14.625H20.2109ZM26.7109 14.625V32.2969H29.5603L29.7634 30.4694L29.8538 29.6562H37.99L38.2833 32.2969H45.2969C45.8809 32.2969 46.3537 32.0998 46.8278 31.6852C47.3019 31.2703 47.75 30.6208 48.118 29.793C48.854 28.1371 49.258 25.7972 49.258 23.4613C49.258 21.1254 48.8542 18.7854 48.1182 17.1295C47.7502 16.3016 47.3022 15.6518 46.828 15.2369C46.3539 14.8221 45.8809 14.6251 45.2969 14.625H26.7109ZM20.2109 21.125V25.7969H24.8828V21.125H20.2109ZM20.2109 27.625V32.2969H24.8828V27.625H20.2109ZM8.74016 31.4844L7.31829 44.2812H15.0255L13.6038 31.4844H8.74016ZM31.4902 31.4844L30.0683 44.2812H37.7755L36.3538 31.4844H31.4902ZM18.3828 33.2109V44.3828H20.2109V40.625H24.8828V44.3828H26.7109V33.2109H24.8828V38.7969H20.2109V33.2109H18.3828ZM41.3359 34.125V37.1719H44.3828V34.125H41.3359ZM42.0269 39C42.6204 41.0239 43.6942 42.3398 44.9029 43.1197C46.7405 44.3051 48.75 44.2812 49.5625 44.2812V42.4531C48.75 42.4531 47.2048 42.4293 45.894 41.5834C45.1274 41.0888 44.3937 40.322 43.9162 39H42.0269Z"
@@ -283,14 +241,16 @@ const App = () => {
                     {/* İkon */}
                   </Nav.Link>
                 </Nav.Item>
-                <Nav.Item onClick={() =>
-                          changeBackground1(
-                            otomasyonHero,
-                            4,
-                            "Otomasyon Sistemleri",
-                            "Kesintisiz Kontrol, Maksimum Verimlilik!"
-                          )
-                        }>
+                <Nav.Item
+                  onClick={() =>
+                    changeBackground1(
+                      otomasyonHero,
+                      4,
+                      "Otomasyon Sistemleri",
+                      "Kesintisiz Kontrol, Maksimum Verimlilik!"
+                    )
+                  }
+                >
                   <Nav.Link
                     eventKey="fourth"
                     className="px-4 d-flex gap-2 justify-content-center flex-column"
@@ -303,7 +263,6 @@ const App = () => {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                         className="z-3"
-                        
                       >
                         <path
                           fill-rule="evenodd"
@@ -321,14 +280,16 @@ const App = () => {
                     {/* İkon */}
                   </Nav.Link>
                 </Nav.Item>
-                <Nav.Item onClick={() =>
-                          changeBackground1(
-                            endustriHero,
-                            5,
-                            "Endüstriyel Çözümler",
-                            "Güçlü ve Verimli Altyapı ile Üstün Performans!"
-                          )
-                        }>
+                <Nav.Item
+                  onClick={() =>
+                    changeBackground1(
+                      endustriHero,
+                      5,
+                      "Endüstriyel Çözümler",
+                      "Güçlü ve Verimli Altyapı ile Üstün Performans!"
+                    )
+                  }
+                >
                   <Nav.Link
                     eventKey="fifth"
                     className="px-4 d-flex gap-2 justify-content-center flex-column"
@@ -341,7 +302,6 @@ const App = () => {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                         className="z-3"
-                        
                       >
                         <path
                           d="M47.125 19.5C45.8321 19.5 44.5921 20.0136 43.6779 20.9279C42.7636 21.8421 42.25 23.0821 42.25 24.375H35.75C35.75 23.0821 35.2364 21.8421 34.3221 20.9279C33.4079 20.0136 32.1679 19.5 30.875 19.5H21.125C19.8321 19.5 18.5921 20.0136 17.6779 20.9279C16.7636 21.8421 16.25 23.0821 16.25 24.375H9.75C9.75 23.0821 9.23639 21.8421 8.32215 20.9279C7.40791 20.0136 6.16793 19.5 4.875 19.5H0V42.25H4.875C6.16793 42.25 7.40791 41.7364 8.32215 40.8221C9.23639 39.9079 9.75 38.6679 9.75 37.375H16.25C16.25 38.6679 16.7636 39.9079 17.6779 40.8221C18.5921 41.7364 19.8321 42.25 21.125 42.25H30.875C32.1679 42.25 33.4079 41.7364 34.3221 40.8221C35.2364 39.9079 35.75 38.6679 35.75 37.375H42.25C42.25 38.6679 42.7636 39.9079 43.6779 40.8221C44.5921 41.7364 45.8321 42.25 47.125 42.25H52V19.5H47.125ZM4.875 39H3.25V22.75H4.875C5.30598 22.75 5.7193 22.9212 6.02405 23.226C6.3288 23.5307 6.5 23.944 6.5 24.375V37.375C6.5 37.806 6.3288 38.2193 6.02405 38.524C5.7193 38.8288 5.30598 39 4.875 39ZM32.5 34.125V37.375C32.5 37.806 32.3288 38.2193 32.024 38.524C31.7193 38.8288 31.306 39 30.875 39H21.125C20.694 39 20.2807 38.8288 19.976 38.524C19.6712 38.2193 19.5 37.806 19.5 37.375V34.125H9.75V27.625H19.5V24.375C19.5 23.944 19.6712 23.5307 19.976 23.226C20.2807 22.9212 20.694 22.75 21.125 22.75H30.875C31.306 22.75 31.7193 22.9212 32.024 23.226C32.3288 23.5307 32.5 23.944 32.5 24.375V27.625H42.25V34.125H32.5ZM48.75 39H47.125C46.694 39 46.2807 38.8288 45.976 38.524C45.6712 38.2193 45.5 37.806 45.5 37.375V24.375C45.5 23.944 45.6712 23.5307 45.976 23.226C46.2807 22.9212 46.694 22.75 47.125 22.75H48.75V39Z"
@@ -357,14 +317,16 @@ const App = () => {
                     {/* İkon */}
                   </Nav.Link>
                 </Nav.Item>
-                <Nav.Item onClick={() =>
-                          changeBackground1(
-                            card1,
-                            6,
-                            "Savel Shop",
-                            "Kalite ve Güvenilirlikte Bir Adım Önde!"
-                          )
-                        }>
+                <Nav.Item
+                  onClick={() =>
+                    changeBackground1(
+                      card1,
+                      6,
+                      "Savel Shop",
+                      "Kalite ve Güvenilirlikte Bir Adım Önde!"
+                    )
+                  }
+                >
                   <Nav.Link
                     eventKey="sixth"
                     className="px-4 d-flex gap-2 justify-content-center flex-column"
@@ -377,7 +339,6 @@ const App = () => {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                         className="z-3"
-                        
                       >
                         <path
                           d="M30.8782 36.3404C31.1485 36.3032 31.4237 36.3255 31.6845 36.4056C31.9453 36.4858 32.1854 36.6219 32.3882 36.8045C32.5909 36.9872 32.7513 37.2118 32.8582 37.4629C32.9651 37.7139 33.0159 37.9852 33.007 38.2579L33.1771 42.1222C33.1722 42.3413 33.2128 42.5591 33.2962 42.7618C33.3797 42.9646 33.5042 43.1478 33.6619 43.3C33.8197 43.4523 34.0072 43.5702 34.2128 43.6464C34.4183 43.7226 34.6374 43.7554 34.8562 43.7428C35.2724 43.7184 35.6641 43.538 35.9533 43.2376C36.2424 42.9373 36.4077 42.539 36.4162 42.1222C36.4076 39.6489 36.4162 35.2723 36.4162 32.2693L32.7589 28.3584M30.8782 44.5434V29.6617C30.878 29.0024 30.6159 28.3701 30.1497 27.9039C29.6835 27.4377 29.0513 27.1757 28.392 27.1754H23.4195C22.7605 27.1763 22.1287 27.4385 21.6628 27.9046C21.1969 28.3707 20.9349 29.0026 20.9343 29.6617V44.5445L30.8782 44.5434ZM28.4949 29.8155H23.3177V34.372H28.4949V29.8155Z"
@@ -425,9 +386,10 @@ const App = () => {
                             İstasyon
                           </h5>
                           <p className="z-3 explanation">
-                            Genelensel akaryakıt istasyonlarına alternatif <br />
-                            maliyeti düşük, dinamik ve güvenirliği yüksek <br /> olan 
-                            mobil istasyon çözümleridir.
+                            Genelensel akaryakıt istasyonlarına alternatif{" "}
+                            <br />
+                            maliyeti düşük, dinamik ve güvenirliği yüksek <br />{" "}
+                            olan mobil istasyon çözümleridir.
                           </p>
                         </div>
                       </Col>
@@ -554,7 +516,8 @@ const App = () => {
                             Çözümler
                           </h5>
                           <p className="z-3 explanation">
-                            20 yıllık tecrübemizle ve yenilikçi ekibimizle bütün <br />
+                            20 yıllık tecrübemizle ve yenilikçi ekibimizle bütün{" "}
+                            <br />
                             endüstriyel çözüm aşamalarında yanınızdayız
                           </p>
                         </div>
@@ -717,67 +680,82 @@ const App = () => {
           backgroundImage: `url(${backgroundImage})`,
           transition: "0.3s",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover"
+          backgroundSize: "cover",
         }}
       >
         <Container className="h-100 d-flex align-items-center">
-        <Row className="h-100 w-100 first-row d-flex justify-content-center align-items-center">
-          <Col
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-            className="p-0 d-flex justify-content-center align-items-center image-container"
-            onMouseEnter={() => changeBackground(imgCardb, 1)}
-            style={{
-              backgroundColor: selectedButton === 1 ? "" : "",
-            }}
-          >
-            <div className="image-wrapper">
-              <img src={imgCard} className="img-fluid img-ortak" alt="Image 1" />
-            </div>
-          </Col>
-          <Col
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-            className="p-0 d-flex justify-content-center align-items-center image-container"
-            onMouseEnter={() => changeBackground(istasyonb, 2)}
-          >
-            <div className="image-wrapper">
-              <img src={istasyon} className="img-fluid img-ortak" alt="Image 2" />
-            </div>
-          </Col>
-          <Col
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-            className="p-0 d-flex justify-content-center align-items-center image-container"
-            onMouseEnter={() => changeBackground(otomasyonb, 3)}
-          >
-            <div className="image-wrapper">
-              <img src={otomasyon} className="img-3 img-fluid img-ortak" alt="Image 3" />
-            </div>
-          </Col>
-          <Col
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-            className="p-0 d-flex justify-content-center align-items-center image-container"
-            onMouseEnter={() => changeBackground(projeb, 4)}
-          >
-            <div className="image-wrapper">
-              <img src={proje} className="img-4 img-fluid img-ortak" alt="Image 4" />
-            </div>
-          </Col>
-        </Row>
-      </Container>
+          <Row className="h-100 w-100 first-row d-flex justify-content-center align-items-center">
+            <Col
+              xs={12}
+              sm={12}
+              md={6}
+              lg={6}
+              className="p-0 d-flex justify-content-center align-items-center image-container"
+              onMouseEnter={() => changeBackground(imgCardb, 1)}
+              style={{
+                backgroundColor: selectedButton === 1 ? "" : "",
+              }}
+            >
+              <div className="image-wrapper">
+                <img
+                  src={imgCard}
+                  className="img-fluid img-ortak"
+                  alt="Image 1"
+                />
+              </div>
+            </Col>
+            <Col
+              xs={12}
+              sm={12}
+              md={6}
+              lg={6}
+              className="p-0 d-flex justify-content-center align-items-center image-container"
+              onMouseEnter={() => changeBackground(istasyonb, 2)}
+            >
+              <div className="image-wrapper">
+                <img
+                  src={istasyon}
+                  className="img-fluid img-ortak"
+                  alt="Image 2"
+                />
+              </div>
+            </Col>
+            <Col
+              xs={12}
+              sm={12}
+              md={6}
+              lg={6}
+              className="p-0 d-flex justify-content-center align-items-center image-container"
+              onMouseEnter={() => changeBackground(otomasyonb, 3)}
+            >
+              <div className="image-wrapper">
+                <img
+                  src={otomasyon}
+                  className="img-3 img-fluid img-ortak"
+                  alt="Image 3"
+                />
+              </div>
+            </Col>
+            <Col
+              xs={12}
+              sm={12}
+              md={6}
+              lg={6}
+              className="p-0 d-flex justify-content-center align-items-center image-container"
+              onMouseEnter={() => changeBackground(projeb, 4)}
+            >
+              <div className="image-wrapper">
+                <img
+                  src={proje}
+                  className="img-4 img-fluid img-ortak"
+                  alt="Image 4"
+                />
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </div>
 
-      <Footer />
     </>
   );
 };

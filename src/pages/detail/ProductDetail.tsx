@@ -1,14 +1,10 @@
-import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
   Container,
   Row,
   Col,
   Image,
-  Button,
   Nav,
-  Navbar,
-  Offcanvas,
 } from "react-bootstrap";
 import img1 from "../../images/araclar/konteynır tipi.png";
 import img2 from "../../images/araclar/römork tipi.png";
@@ -20,10 +16,8 @@ import img7 from "../../images/araclar/akaryakıt disp seri7.png";
 import img8 from "../../images/araclar/lpg disp seri2.png";
 import img9 from "../../images/araclar/lpg disp seri3.png";
 import img10 from "../../images/araclar/lpg disp seri7.png";
-import { RxHamburgerMenu } from "react-icons/rx";
-import logo from "../../icons/logopng.png";
+
 import { FaArrowLeftLong } from "react-icons/fa6";
-import Footer from "../footer/Footer";
 
 interface Product {
   id: string;
@@ -94,9 +88,7 @@ const productDetails: { [key: string]: string } = {
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const decodedId = decodeURIComponent(id || "");
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+ 
   const product: Product = {
     id: decodedId,
     name: decodedId,
@@ -114,40 +106,7 @@ const ProductDetail = () => {
 
   return (
     <>
-      <Navbar className="bg-dark">
-        <Container>
-          <Navbar.Brand className="z-3">
-            <img src={logo} width={170} alt="Site Logo" />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-              <Nav className="me-auto">
-                <Nav.Link className="d-flex align-items-center">
-                  <span className="z-3 fs-5 text-white">TR</span>
-                  <Button
-                    className="z-3"
-                    variant="outline"
-                    onClick={handleShow}
-                  >
-                    <RxHamburgerMenu className="text-white" size={25} />
-                  </Button>
-                  <Nav.Link className="z-3" as={Link} to={"/products"}>
-                    <Button variant="outline">Ürünler</Button>
-                  </Nav.Link>
-
-                  <Offcanvas show={show} onHide={handleClose}>
-                    <Offcanvas.Header closeButton>
-                      <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-                    </Offcanvas.Header>
-                    <Offcanvas.Body></Offcanvas.Body>
-                  </Offcanvas>
-                </Nav.Link>
-              </Nav>
-            </Navbar.Text>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      
 
       <Container className="my-5">
         <Nav.Link
@@ -166,12 +125,10 @@ const ProductDetail = () => {
             <p>{product.description}</p>
             <h4>Ürün Detayları</h4>
             <p>{product.details}</p>
-            {/* <Button variant="secondary"><Nav.Link as={Link} to={"/products"}>Ürün Listesine Dön</Nav.Link></Button> */}
           </Col>
         </Row>
       </Container>
 
-      <Footer />
     </>
   );
 };

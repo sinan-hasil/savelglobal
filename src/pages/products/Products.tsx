@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
-import { Button, Card, Col, Container, Nav, Navbar, Offcanvas, Row } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  Col,
+  Container,
+  Nav,
+  Row,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
-import { RxHamburgerMenu } from "react-icons/rx";
 import img1 from "../../images/araclar/konteynır tipi.png";
 import img2 from "../../images/araclar/römork tipi.png";
 import img3 from "../../images/araclar/akaryakıt disp seri3.png";
@@ -13,9 +19,7 @@ import img7 from "../../images/araclar/akaryakıt disp seri7.png";
 import img8 from "../../images/araclar/lpg disp seri2.png";
 import img9 from "../../images/araclar/lpg disp seri3.png";
 import img10 from "../../images/araclar/lpg disp seri7.png";
-import logo from "../../icons/logopng.png";
 import "./products.css";
-import Footer from "../footer/Footer";
 
 type ProductItem = string[] | { [key: string]: string[] };
 
@@ -95,9 +99,6 @@ const productImages: { [key: string]: string } = {
 };
 
 const Products = () => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const [showdrop, setShowDrop] = useState(true);
   const [openCategory, setOpenCategory] = useState<string | null>(
     "Taşınabilir İstasyon"
@@ -116,18 +117,17 @@ const Products = () => {
     }
   }, []);
 
-  const toggleDrop = () => setShowDrop(!showdrop);
+  const toggleDrop = () => {
+    setShowDrop(!showdrop);
+  };
 
   const toggleCategory = (category: string) => {
     if (openCategory === category) {
-      // Eğer zaten açık olan kategori tıklanmışsa, kapat
       setOpenCategory(null);
-      setSelectedCategory(null);
-      setCategoryItems([]);
     } else {
-      // Yeni bir kategori açılıyorsa
       setOpenCategory(category);
       setSelectedCategory(category);
+
       const selectedProduct = products.find(
         (product) => Object.keys(product)[0] === category
       );
@@ -136,7 +136,7 @@ const Products = () => {
         const productItems = selectedProduct[categoryName];
         if (Array.isArray(productItems)) {
           setCategoryItems(productItems);
-        } else {
+        } else if (typeof productItems === "object") {
           const subItems = Object.values(productItems).flat();
           setCategoryItems(subItems);
         }
@@ -146,40 +146,7 @@ const Products = () => {
 
   return (
     <>
-      <Navbar className="bg-dark">
-        <Container fluid>
-          <Navbar.Brand className="z-3">
-            <img src={logo} width={170} alt="Site Logo" />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-              <Nav className="me-auto">
-                <Nav.Link className="d-flex align-items-center">
-                  <span className="z-3 fs-5 text-white">TR</span>
-                  <Button
-                    className="z-3"
-                    variant="outline"
-                    onClick={handleShow}
-                  >
-                    <RxHamburgerMenu className="text-white" size={25} />
-                  </Button>
-                  <Nav.Link className="z-3" as={Link} to={"/products"}>
-                    <Button variant="outline">Ürünler</Button>
-                  </Nav.Link>
-
-                  <Offcanvas show={show} onHide={handleClose}>
-                    <Offcanvas.Header closeButton>
-                      <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-                    </Offcanvas.Header>
-                    <Offcanvas.Body></Offcanvas.Body>
-                  </Offcanvas>
-                </Nav.Link>
-              </Nav>
-            </Navbar.Text>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      
       <div className="content">
         <div className="nav-drop">
           <div onClick={toggleDrop} className="drop-btn">
@@ -217,7 +184,14 @@ const Products = () => {
                           ? (product[categoryName] as string[]).map(
                               (item, idx) => (
                                 <div className="category-item" key={idx}>
-                                  {item}
+                                  <Nav.Link
+                                    as={Link}
+                                    to={`/product/${encodeURIComponent(
+                                      item
+                                    )}`}
+                                  >
+                                    {item}
+                                  </Nav.Link>
                                 </div>
                               )
                             )
@@ -247,44 +221,39 @@ const Products = () => {
               {selectedCategory ? selectedCategory.toUpperCase() : "Ürünler"}
             </h5>
             <Row className="mt-5">
-              {categoryItems.length > 0 ? (
-                categoryItems.map((item, index) => (
-                  <Col md={4} key={index} className="mb-4">
-                    <Card style={{ width: "18rem" }}>
-                      <Card.Img
-                        className="ms-3"
-                        variant="top"
-                        src={
-                          productImages[item] ||
-                          `https://via.placeholder.com/300x200?text=${item}`
-                        }
-                      />
-                      <Card.Body>
-                        <Card.Title>{item}</Card.Title>
-                        <Card.Text>
-                          {productDescriptions[item] ||
-                            "Bu ürün hakkında bilgi mevcut değil."}
-                        </Card.Text>
-                        <Button variant="primary">
-                          <Nav.Link
-                            as={Link}
-                            to={`/product/${encodeURIComponent(item)}`}
-                          >
-                            Detaylı Bilgi
-                          </Nav.Link>
-                        </Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                ))
-              ) : (
-                <p>Lütfen sol menüden bir kategori seçin</p>
-              )}
+              {categoryItems.map((item, index) => (
+                <Col md={4} key={index} className="mb-4">
+                  <Card style={{ width: "18rem" }}>
+                    <Card.Img
+                      className="ms-3"
+                      variant="top"
+                      src={
+                        productImages[item] ||
+                        `https://via.placeholder.com/300x200?text=${item}`
+                      }
+                    />
+                    <Card.Body>
+                      <Card.Title>{item}</Card.Title>
+                      <Card.Text>
+                        {productDescriptions[item] ||
+                          "Bu ürün hakkında bilgi mevcut değil."}
+                      </Card.Text>
+                      <Button variant="primary">
+                        <Nav.Link
+                          as={Link}
+                          to={`/product/${encodeURIComponent(item)}`}
+                        >
+                          Detaylı Bilgi
+                        </Nav.Link>
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
             </Row>
           </Container>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
