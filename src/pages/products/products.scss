@@ -6,11 +6,13 @@
   display: flex !important;
   width: 100%;
   height: 100vh;
+  margin-bottom: 200px;
 
   .nav-drop{
     min-width: 400px;
     max-width: 400px;
     border-right: 1px solid black;
+    height: 132.5vh;
 
     .drop-btn{
       display: flex;

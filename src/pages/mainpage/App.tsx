@@ -97,7 +97,7 @@ const App = () => {
                       <RxHamburgerMenu className="text-white" size={25} />
                     </Button>
                     <Nav.Link className="z-3" as={Link} to={"/products"}>
-                        <Button>Productsa</Button>
+                        <Button variant="outline">Ürünler</Button>
                         </Nav.Link>
 
                     <Offcanvas show={show} onHide={handleClose}>
@@ -425,10 +425,9 @@ const App = () => {
                             İstasyon
                           </h5>
                           <p className="z-3 explanation">
-                            Basit tank çözümleriyle başlayan yolumuz bugün bir
-                            akaryakıt <br /> istasyonunda olması gerekenher şeyi
-                            ihtiva eden 40ft’lik konteynırlarla <br /> devam
-                            etmektedir. <a href="">Detaylı Bilgi</a>
+                            Genelensel akaryakıt istasyonlarına alternatif <br />
+                            maliyeti düşük, dinamik ve güvenirliği yüksek <br /> olan 
+                            mobil istasyon çözümleridir.
                           </p>
                         </div>
                       </Col>
@@ -459,8 +458,8 @@ const App = () => {
                           <p className="z-3 explanation">
                             Dispenserler, yakıtın güvenli ve doğru şekilde
                             transferini sağlayan <br /> temel ekipmanlardır.
-                            Savel olarak, yüksek performanslı ve <br />{" "}
-                            dayanıklı dispenser çözümleri sunuyoruz.
+                            Savel olarak, yüksek performanslı ve <br />
+                            yenilikçi dispenser çözümleri sunuyoruz.
                           </p>
                         </div>
                       </Col>
@@ -552,14 +551,11 @@ const App = () => {
                         <div className="icon-explanation">
                           <h5 className="z-3 text-white">
                             Endüstriyel <br />
-                            Ekipmanlar
+                            Çözümler
                           </h5>
                           <p className="z-3 explanation">
-                            Endüstriyel ekipmanlar, petrol istasyonlarının etkin
-                            ve güvenli <br /> çalışmasını sağlamak için
-                            tasarlanmıştır. Savel olarak, <br /> yüksek kaliteli
-                            endüstriyel çözümlerimizle <br />
-                            performansı ve güvenliği artırıyoruz.
+                            20 yıllık tecrübemizle ve yenilikçi ekibimizle bütün <br />
+                            endüstriyel çözüm aşamalarında yanınızdayız
                           </p>
                         </div>
                       </Col>
