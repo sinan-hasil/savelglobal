@@ -1,17 +1,9 @@
 import { useState, useEffect } from "react";
-import {
-  Button,
-  Card,
-  Col,
-  Container,
-  Nav,
-  Row,
-} from "react-bootstrap";
+import { Button, Card, Col, Container, Nav, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
 import img1 from "../../images/araclar/konteynır tipi.png";
 import img2 from "../../images/araclar/römork tipi.png";
-import img3 from "../../images/araclar/akaryakıt disp seri3.png";
 import img4 from "../../images/araclar/akaryakıt disp seri1.png";
 import img5 from "../../images/araclar/akaryakıt disp seri5.png";
 import img6 from "../../images/araclar/akaryakıt disp seri6.png";
@@ -88,7 +80,7 @@ const productDescriptions: { [key: string]: string } = {
 const productImages: { [key: string]: string } = {
   "Konteyner Tipi": img1,
   "Römork Tipi": img2,
-  "7 Serisi Akaryakıt Pompası": img3,
+  "7 Serisi Akaryakıt Pompası": img7,
   "6 Serisi Akaryakıt Pompası": img4,
   "5 Serisi Akaryakıt Pompası": img5,
   "3 Serisi Akaryakıt Pompası": img6,
@@ -146,7 +138,6 @@ const Products = () => {
 
   return (
     <>
-      
       <div className="content">
         <div className="nav-drop">
           <div onClick={toggleDrop} className="drop-btn">
@@ -186,9 +177,7 @@ const Products = () => {
                                 <div className="category-item" key={idx}>
                                   <Nav.Link
                                     as={Link}
-                                    to={`/product/${encodeURIComponent(
-                                      item
-                                    )}`}
+                                    to={`/product/${encodeURIComponent(item)}`}
                                   >
                                     {item}
                                   </Nav.Link>
@@ -200,9 +189,16 @@ const Products = () => {
                                 <div key={subCategory}>
                                   <strong>{subCategory}</strong>
                                   {(items as string[]).map((item, idx) => (
-                                    <div key={idx} className="category-item">
+                                    <Nav.Link
+                                    className="category-item"
+                                    key={idx}
+                                      as={Link}
+                                      to={`/product/${encodeURIComponent(
+                                        item
+                                      )}`}
+                                    >
                                       {item}
-                                    </div>
+                                    </Nav.Link>
                                   ))}
                                 </div>
                               )
