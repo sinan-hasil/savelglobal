@@ -377,7 +377,7 @@ const App = () => {
               </Nav>
               <Tab.Content>
                 <Tab.Pane eventKey="first">
-                  <Container className="d-flex align-items-center justify-content-between">
+                  <Container fluid className="d-flex align-items-center justify-content-between">
                     <Row className="w-100 d-flex justify-content-between">
                       <Col sm={12} md={6}>
                         <div className="icon-explanation">

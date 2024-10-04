@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
 import img1 from "../../images/araclar/konteynır tipi.png";
 import img2 from "../../images/araclar/römork tipi.png";
-import img4 from "../../images/araclar/akaryakıt disp seri1.png";
 import img5 from "../../images/araclar/akaryakıt disp seri5.png";
 import img6 from "../../images/araclar/akaryakıt disp seri6.png";
 import img7 from "../../images/araclar/akaryakıt disp seri7.png";
@@ -43,7 +42,7 @@ const products: Product[] = [
     Tanklar: ["Akaryakıt Tankları", "LPG Tankları", "Jeneratör Tankları"],
   },
   {
-    "Otomasyon Çözümleri": ["..."],
+    "Otomasyon Çözümleri": [""],
   },
   {
     Endüstriyel: [
@@ -81,7 +80,7 @@ const productImages: { [key: string]: string } = {
   "Konteyner Tipi": img1,
   "Römork Tipi": img2,
   "7 Serisi Akaryakıt Pompası": img7,
-  "6 Serisi Akaryakıt Pompası": img4,
+  "6 Serisi Akaryakıt Pompası": img6,
   "5 Serisi Akaryakıt Pompası": img5,
   "3 Serisi Akaryakıt Pompası": img6,
   "1 Serisi Akaryakıt Pompası": img7,
@@ -136,6 +135,16 @@ const Products = () => {
     }
   };
 
+  const handleDownloadPDF = () => {
+    const pdfUrl = '/path/to/your/otomasyon-cozumleri.pdf'; // PDF dosyanızın yolunu buraya ekleyin
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = 'otomasyon-cozumleri.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
       <div className="content">
@@ -172,30 +181,23 @@ const Products = () => {
                     {openCategory === categoryName && (
                       <div className="product-list">
                         {Array.isArray(product[categoryName])
-                          ? (product[categoryName] as string[]).map(
-                              (item, idx) => (
-                                <div className="category-item" key={idx}>
-                                  <Nav.Link
-                                    as={Link}
-                                    to={`/product/${encodeURIComponent(item)}`}
-                                  >
-                                    {item}
-                                  </Nav.Link>
-                                </div>
-                              )
-                            )
-                          : Object.entries(product[categoryName]).map(
+                          ? (product[categoryName] as string[]).map((item, idx) => (
+                              <div className="category-item" key={idx}>
+                                <Nav.Link as={Link} to={`/products/${encodeURIComponent(item)}`}>
+                                  {item}
+                                </Nav.Link>
+                              </div>
+                            ))
+                          : Object.entries(product[categoryName] as { [key: string]: string[] }).map(
                               ([subCategory, items]) => (
                                 <div key={subCategory}>
                                   <strong>{subCategory}</strong>
-                                  {(items as string[]).map((item, idx) => (
+                                  {items.map((item, idx) => (
                                     <Nav.Link
-                                    className="category-item"
-                                    key={idx}
+                                      className="category-item"
+                                      key={idx}
                                       as={Link}
-                                      to={`/product/${encodeURIComponent(
-                                        item
-                                      )}`}
+                                      to={`/products/${encodeURIComponent(item)}`}
                                     >
                                       {item}
                                     </Nav.Link>
@@ -216,37 +218,46 @@ const Products = () => {
             <h5 className="mt-3 text-center">
               {selectedCategory ? selectedCategory.toUpperCase() : "Ürünler"}
             </h5>
-            <Row className="mt-5">
-              {categoryItems.map((item, index) => (
-                <Col md={4} key={index} className="mb-4">
-                  <Card style={{ width: "18rem" }}>
-                    <Card.Img
-                      className="ms-3"
-                      variant="top"
-                      src={
-                        productImages[item] ||
-                        `https://via.placeholder.com/300x200?text=${item}`
-                      }
-                    />
-                    <Card.Body>
-                      <Card.Title>{item}</Card.Title>
-                      <Card.Text>
-                        {productDescriptions[item] ||
-                          "Bu ürün hakkında bilgi mevcut değil."}
-                      </Card.Text>
-                      <Button variant="primary">
-                        <Nav.Link
-                          as={Link}
-                          to={`/product/${encodeURIComponent(item)}`}
-                        >
-                          Detaylı Bilgi
-                        </Nav.Link>
-                      </Button>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))}
-            </Row>
+            {selectedCategory === "Otomasyon Çözümleri" ? (
+              <div className="otomasyon-content mt-4 text-center">
+                <p>Otomasyon çözümlerimiz hakkında detaylı bilgi için PDF'i indirebilirsiniz.</p>
+                <Button onClick={handleDownloadPDF} variant="primary">
+                  PDF İndir
+                </Button>
+              </div>
+            ) : (
+              <Row className="mt-5">
+                {categoryItems.map((item, index) => (
+                  <Col md={4} key={index} className="mb-4">
+                    <Card style={{ width: "18rem" }}>
+                      <Card.Img
+                        className="ms-3"
+                        variant="top"
+                        src={
+                          productImages[item] ||
+                          `https://via.placeholder.com/300x200?text=${item}`
+                        }
+                      />
+                      <Card.Body>
+                        <Card.Title>{item}</Card.Title>
+                        <Card.Text>
+                          {productDescriptions[item] ||
+                            "Bu ürün hakkında bilgi mevcut değil."}
+                        </Card.Text>
+                        <Button variant="primary">
+                          <Nav.Link
+                            as={Link}
+                            to={`/products/${encodeURIComponent(item)}`}
+                          >
+                            Detaylı Bilgi
+                          </Nav.Link>
+                        </Button>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            )}
           </Container>
         </div>
       </div>
