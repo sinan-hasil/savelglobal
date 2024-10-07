@@ -10,6 +10,9 @@ import Seri7 from "./Dispenserler/akaryakit/Seri7";
 import Seri2lpg from "./Dispenserler/LPG/Seri2lpg";
 import Seri3lpg from "./Dispenserler/LPG/Seri3lpg";
 import Seri7lpg from "./Dispenserler/LPG/Seri7lpg";
+import AkaryakitTanki from "./Tanklar/AkaryakitTanki";
+import Lpgtank from "./Tanklar/Lpgtank";
+import Jenerator from "./Tanklar/Jenerator";
 
 const ProductDetail = () => {
   const { productName } = useParams<{ productName: string }>();
@@ -32,12 +35,18 @@ const ProductDetail = () => {
         return <Seri6 />;
       case "7 Serisi Akaryakıt Pompası":
         return <Seri7 />;
-        case "2 Serisi LPG Dispenseri":
+      case "2 Serisi LPG Dispenseri":
         return <Seri2lpg />;
       case "3 Serisi LPG Dispenseri":
         return <Seri3lpg />;
       case "7 Serisi LPG Dispenseri":
         return <Seri7lpg />;
+      case "Akaryakıt Tankları":
+        return <AkaryakitTanki />;
+      case "LPG Tankları":
+        return <Lpgtank />;
+      case "Jeneratör Tankları":
+        return <Jenerator />;
       default:
         return <div>Ürün bulunamadı</div>;
     }

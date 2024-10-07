@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button, Card, Col, Container, Nav, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
+import img0 from "../../images/araclar/1 serisi 2.png"
 import img1 from "../../images/araclar/konteynır tipi.png";
 import img2 from "../../images/araclar/römork tipi.png";
 import img5 from "../../images/araclar/akaryakıt disp seri5.png";
@@ -10,6 +11,13 @@ import img7 from "../../images/araclar/akaryakıt disp seri7.png";
 import img8 from "../../images/araclar/lpg disp seri2.png";
 import img9 from "../../images/araclar/lpg disp seri3.png";
 import img10 from "../../images/araclar/lpg disp seri7.png";
+import img11 from "../../images/araclar/akaryakıttankiweb.jpg";
+import img12 from "../../images/araclar/lpg tank1.jpg"
+import img13 from "../../images/araclar/jeneratör tankı.png"
+import img14 from "../../images/araclar/yakıtkontrolsistemi.png"
+import img15 from "../../images/araclar/istasyonkurulum.jpg"
+import img16 from "../../images/araclar/projedanismanlik.jpg"
+import img17 from "../../images/araclar/helpdesk.png"
 import "./products.css";
 
 type ProductItem = string[] | { [key: string]: string[] };
@@ -83,30 +91,61 @@ const productImages: { [key: string]: string } = {
   "6 Serisi Akaryakıt Pompası": img6,
   "5 Serisi Akaryakıt Pompası": img5,
   "3 Serisi Akaryakıt Pompası": img6,
-  "1 Serisi Akaryakıt Pompası": img7,
+  "1 Serisi Akaryakıt Pompası": img0,
   "7 Serisi LPG Dispenseri": img8,
   "3 Serisi LPG Dispenseri": img9,
   "2 Serisi LPG Dispenseri": img10,
+  "Akaryakıt Tankları" : img11,
+  "LPG Tankları" : img12,
+  "Jeneratör Tankları" : img13,
+  "Yakıt Kontrol Sistemleri" : img14,
+  "İstasyon Kurulumu": img15,
+  "Proje Danışmanlık ve Mühendislik" : img16,
+  "Servis Hizmetleri" : img17
 };
 
 const Products = () => {
   const [showdrop, setShowDrop] = useState(true);
-  const [openCategory, setOpenCategory] = useState<string | null>(
-    "Taşınabilir İstasyon"
-  );
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(
-    "Taşınabilir İstasyon"
-  );
+  const [openCategory, setOpenCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [categoryItems, setCategoryItems] = useState<string[]>([]);
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {
-    const tasinabilirIstasyon = products.find(
-      (product) => "Taşınabilir İstasyon" in product
-    );
-    if (tasinabilirIstasyon) {
-      setCategoryItems(tasinabilirIstasyon["Taşınabilir İstasyon"] as string[]);
+    const params = new URLSearchParams(location.search);
+    const categoryParam = params.get('category');
+    
+    if (categoryParam) {
+      setOpenCategory(categoryParam);
+      setSelectedCategory(categoryParam);
+      updateCategoryItems(categoryParam);
+    } else {
+      const defaultCategory = "Taşınabilir İstasyon";
+      setOpenCategory(defaultCategory);
+      setSelectedCategory(defaultCategory);
+      updateCategoryItems(defaultCategory);
+      
+      navigate(`?category=${encodeURIComponent(defaultCategory)}`, { replace: true });
     }
-  }, []);
+  }, [location.search, navigate]);
+
+  const updateCategoryItems = (category: string) => {
+    const selectedProduct = products.find(
+      (product) => Object.keys(product)[0] === category
+    );
+    if (selectedProduct) {
+      const categoryName = Object.keys(selectedProduct)[0];
+      const productItems = selectedProduct[categoryName];
+      if (Array.isArray(productItems)) {
+        setCategoryItems(productItems);
+      } else if (typeof productItems === "object") {
+        const subItems = Object.values(productItems).flat();
+        setCategoryItems(subItems);
+      }
+    }
+  };
 
   const toggleDrop = () => {
     setShowDrop(!showdrop);
@@ -115,34 +154,36 @@ const Products = () => {
   const toggleCategory = (category: string) => {
     if (openCategory === category) {
       setOpenCategory(null);
+      setSelectedCategory(null);
+      setCategoryItems([]);
+      navigate('', { replace: true });
     } else {
       setOpenCategory(category);
       setSelectedCategory(category);
-
-      const selectedProduct = products.find(
-        (product) => Object.keys(product)[0] === category
-      );
-      if (selectedProduct) {
-        const categoryName = Object.keys(selectedProduct)[0];
-        const productItems = selectedProduct[categoryName];
-        if (Array.isArray(productItems)) {
-          setCategoryItems(productItems);
-        } else if (typeof productItems === "object") {
-          const subItems = Object.values(productItems).flat();
-          setCategoryItems(subItems);
-        }
-      }
+      updateCategoryItems(category);
+      
+      navigate(`?category=${encodeURIComponent(category)}`, { replace: true });
     }
   };
 
   const handleDownloadPDF = () => {
-    const pdfUrl = '/path/to/your/otomasyon-cozumleri.pdf'; // PDF dosyanızın yolunu buraya ekleyin
+    const pdfUrl = '/path/to/your/otomasyon-cozumleri.pdf';
     const link = document.createElement('a');
     link.href = pdfUrl;
     link.download = 'otomasyon-cozumleri.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const getImageWidth = (item: string) => {
+    const narrowWidthItems = [
+      "1 Serisi Akaryakıt Pompası",
+      "7 Serisi LPG Dispenseri",
+      "3 Serisi LPG Dispenseri",
+      "2 Serisi LPG Dispenseri"
+    ];
+    return narrowWidthItems.includes(item) ? "150px" : "200px";
   };
 
   return (
@@ -228,11 +269,16 @@ const Products = () => {
             ) : (
               <Row className="mt-5">
                 {categoryItems.map((item, index) => (
-                  <Col md={4} key={index} className="mb-4">
+                  <Col sm={12} md={6} lg={4} key={index} className="mb-4">
                     <Card style={{ width: "18rem" }}>
                       <Card.Img
-                        className="ms-3"
+                        className="ms-4"
                         variant="top"
+                        style={{
+                          width: getImageWidth(item),
+                          height: "150px",
+                          objectFit: "contain",
+                        }}
                         src={
                           productImages[item] ||
                           `https://via.placeholder.com/300x200?text=${item}`

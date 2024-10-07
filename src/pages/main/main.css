@@ -1,0 +1,31 @@
+ .nav-drop {
+    min-width: 400px;
+    max-width: 400px;
+    border-right: 1px solid black;
+    height: 121vh;
+  }
+ .nav-drop .drop-btn, .nav-drop .category-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border-bottom: 1px solid black;
+  }
+ .nav-drop .drop-btn p, .nav-drop .category-item p {
+    margin: 0;
+  }
+ .nav-drop .category-item {
+    border: none;
+    cursor: pointer;
+  }
+ .nav-drop .product-list {
+    margin-left: 30px;
+  }
+ .nav-drop .product-list .categry-item {
+    color: gray;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+ .nav-drop .product-list .categry-item:hover {
+    color: black;
+  }

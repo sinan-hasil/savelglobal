@@ -1,5 +1,5 @@
-.navbar {
-  padding: 0 15px;
+.card-img-top {
+  border-radius: 5px !important;
 }
 
 .content {
@@ -9,10 +9,9 @@
   margin-bottom: 200px;
 }
 .content .nav-drop {
-  min-width: 400px;
-  max-width: 400px;
+  width: 400px;
   border-right: 1px solid black;
-  height: 100vh;
+  height: 121vh;
 }
 .content .nav-drop .drop-btn, .content .nav-drop .category-item {
   display: flex;
@@ -41,4 +40,15 @@
 }
 .content .output {
   flex: 1;
+  height: 121vh;
+}
+
+@media screen and (max-width: 576px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+  footer {
+    margin-top: 700px !important;
+  }
 }/*# sourceMappingURL=products.css.map */
