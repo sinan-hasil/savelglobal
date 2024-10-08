@@ -11,32 +11,37 @@
 .content .nav-drop {
   width: 400px;
   border-right: 1px solid black;
-  height: 121vh;
+  height: 137vh;
 }
-.content .nav-drop .drop-btn, .content .nav-drop .category-item {
+.content .nav-drop .drop-btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 15px;
   border-bottom: 1px solid black;
 }
-.content .nav-drop .drop-btn p, .content .nav-drop .category-item p {
+.content .nav-drop .drop-btn p {
   margin: 0;
 }
-.content .nav-drop .category-item {
-  border: none;
-  cursor: pointer;
+.content .nav-drop .drop-content {
+  display: flex;
+  flex-direction: column;
 }
-.content .nav-drop .product-list {
-  margin-left: 30px;
+.content .nav-drop .drop-content .category-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 15px;
 }
-.content .nav-drop .product-list .categry-item {
-  color: gray;
-  cursor: pointer;
-  transition: 0.5s;
+.content .nav-drop .drop-content .category-item {
+  color: #aaa;
+  font-size: 15px;
+  transition: 0.2s;
 }
-.content .nav-drop .product-list .categry-item:hover {
+.content .nav-drop .drop-content .category-item:hover {
   color: black;
+}
+.content .nav-drop .drop-content b {
+  color: #6d6b6b;
 }
 .content .output {
   flex: 1;

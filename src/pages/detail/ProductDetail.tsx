@@ -13,6 +13,9 @@ import Seri7lpg from "./Dispenserler/LPG/Seri7lpg";
 import AkaryakitTanki from "./Tanklar/AkaryakitTanki";
 import Lpgtank from "./Tanklar/Lpgtank";
 import Jenerator from "./Tanklar/Jenerator";
+import Yakitkontrol from "./endüstriyel/Yakitkontrol";
+import Istasyonkurulum from "./endüstriyel/Istasyonkurlum";
+import Projedanismanlik from "./endüstriyel/Projedanismanlik";
 
 const ProductDetail = () => {
   const { productName } = useParams<{ productName: string }>();
@@ -47,6 +50,12 @@ const ProductDetail = () => {
         return <Lpgtank />;
       case "Jeneratör Tankları":
         return <Jenerator />;
+      case "Yakıt Kontrol Sistemleri":
+        return <Yakitkontrol />;
+      case "İstasyon Kurulumu":
+        return <Istasyonkurulum />;
+        case "Proje Danışmanlık ve Mühendislik":
+          return <Projedanismanlik />
       default:
         return <div>Ürün bulunamadı</div>;
     }

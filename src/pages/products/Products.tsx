@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button, Card, Col, Container, Nav, Row } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
-import img0 from "../../images/araclar/1 serisi 2.png"
+import img0 from "../../images/araclar/1 serisi 2.png";
 import img1 from "../../images/araclar/konteynır tipi.png";
 import img2 from "../../images/araclar/römork tipi.png";
 import img5 from "../../images/araclar/akaryakıt disp seri5.png";
@@ -12,12 +11,20 @@ import img8 from "../../images/araclar/lpg disp seri2.png";
 import img9 from "../../images/araclar/lpg disp seri3.png";
 import img10 from "../../images/araclar/lpg disp seri7.png";
 import img11 from "../../images/araclar/akaryakıttankiweb.jpg";
-import img12 from "../../images/araclar/lpg tank1.jpg"
-import img13 from "../../images/araclar/jeneratör tankı.png"
-import img14 from "../../images/araclar/yakıtkontrolsistemi.png"
-import img15 from "../../images/araclar/istasyonkurulum.jpg"
-import img16 from "../../images/araclar/projedanismanlik.jpg"
-import img17 from "../../images/araclar/helpdesk.png"
+import img12 from "../../images/araclar/lpg tank1.jpg";
+import img13 from "../../images/araclar/jeneratör tankı.png";
+import img14 from "../../images/araclar/yakıtkontrolsistemi.png";
+import img15 from "../../images/araclar/istasyonkurulum.jpg";
+import img16 from "../../images/araclar/projedanismanlik.jpg";
+import img17 from "../../images/araclar/helpdesk.png";
+import img18 from "../../images/araclar/altyapıtesisat.png"
+import img19 from "../../images/araclar/pompa.webp"
+import img20 from "../../images/araclar/adblue.png"
+import img21 from "../../images/araclar/akarykitekipmani.jpg"
+import img22 from "../../images/araclar/lpgekipmani.webp"
+import img23 from "../../images/araclar/yakitsayac.webp"
+import img24 from "../../images/araclar/yağsayac.webp"
+import { IoIosArrowDown } from "react-icons/io";
 import "./products.css";
 
 type ProductItem = string[] | { [key: string]: string[] };
@@ -69,7 +76,6 @@ const products: Product[] = [
       "LPG Ekipmanları",
       "Yakıt Sayaçları",
       "Yağ Sayaçları",
-      "Ölçü Kontrol",
     ],
   },
 ];
@@ -95,13 +101,20 @@ const productImages: { [key: string]: string } = {
   "7 Serisi LPG Dispenseri": img8,
   "3 Serisi LPG Dispenseri": img9,
   "2 Serisi LPG Dispenseri": img10,
-  "Akaryakıt Tankları" : img11,
-  "LPG Tankları" : img12,
-  "Jeneratör Tankları" : img13,
-  "Yakıt Kontrol Sistemleri" : img14,
+  "Akaryakıt Tankları": img11,
+  "LPG Tankları": img12,
+  "Jeneratör Tankları": img13,
+  "Yakıt Kontrol Sistemleri": img14,
   "İstasyon Kurulumu": img15,
-  "Proje Danışmanlık ve Mühendislik" : img16,
-  "Servis Hizmetleri" : img17
+  "Proje Danışmanlık ve Mühendislik": img16,
+  "Servis Hizmetleri": img17,
+  "Altyapı Tesisat malzemeleri" : img18,
+  "Yakıt Pompaları" : img19,
+  "Adblue Ekipmanları" : img20,
+  "Akaryakıt Ekipmanları" : img21,
+  "LPG Ekipmanları" : img22,
+  "Yakıt Sayaçları" : img23,
+  "Yağ Sayaçları" : img24,
 };
 
 const Products = () => {
@@ -115,8 +128,8 @@ const Products = () => {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const categoryParam = params.get('category');
-    
+    const categoryParam = params.get("category");
+
     if (categoryParam) {
       setOpenCategory(categoryParam);
       setSelectedCategory(categoryParam);
@@ -126,8 +139,10 @@ const Products = () => {
       setOpenCategory(defaultCategory);
       setSelectedCategory(defaultCategory);
       updateCategoryItems(defaultCategory);
-      
-      navigate(`?category=${encodeURIComponent(defaultCategory)}`, { replace: true });
+
+      navigate(`?category=${encodeURIComponent(defaultCategory)}`, {
+        replace: true,
+      });
     }
   }, [location.search, navigate]);
 
@@ -156,21 +171,21 @@ const Products = () => {
       setOpenCategory(null);
       setSelectedCategory(null);
       setCategoryItems([]);
-      navigate('', { replace: true });
+      navigate("", { replace: true });
     } else {
       setOpenCategory(category);
       setSelectedCategory(category);
       updateCategoryItems(category);
-      
+
       navigate(`?category=${encodeURIComponent(category)}`, { replace: true });
     }
   };
 
   const handleDownloadPDF = () => {
-    const pdfUrl = '/path/to/your/otomasyon-cozumleri.pdf';
-    const link = document.createElement('a');
+    const pdfUrl = "/path/to/your/otomasyon-cozumleri.pdf";
+    const link = document.createElement("a");
     link.href = pdfUrl;
-    link.download = 'otomasyon-cozumleri.pdf';
+    link.download = "otomasyon-cozumleri.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -181,7 +196,7 @@ const Products = () => {
       "1 Serisi Akaryakıt Pompası",
       "7 Serisi LPG Dispenseri",
       "3 Serisi LPG Dispenseri",
-      "2 Serisi LPG Dispenseri"
+      "2 Serisi LPG Dispenseri",
     ];
     return narrowWidthItems.includes(item) ? "150px" : "200px";
   };
@@ -192,11 +207,12 @@ const Products = () => {
         <div className="nav-drop">
           <div onClick={toggleDrop} className="drop-btn">
             <p>ÜRÜN LİSTESİ</p>
-            {showdrop ? (
-              <IoMdArrowDropup className="up-icon" />
-            ) : (
-              <IoMdArrowDropdown />
-            )}
+            <IoIosArrowDown
+              style={{
+                transform: showdrop ? "rotate(180deg)" : "rotate(0deg)",
+                transition: "transform 0.3s",
+              }}
+            />
           </div>
           {showdrop && (
             <div className="drop-content">
@@ -206,46 +222,52 @@ const Products = () => {
                   <div key={index}>
                     <div
                       onClick={() => toggleCategory(categoryName)}
-                      className="category-item"
+                      className="category-title"
                     >
                       <p>{categoryName}</p>
-                      {openCategory === categoryName ? (
-                        <p>
-                          <IoMdArrowDropup />
-                        </p>
-                      ) : (
-                        <p>
-                          <IoMdArrowDropdown />
-                        </p>
-                      )}
+                      <IoIosArrowDown
+                        style={{
+                          transform: openCategory === categoryName
+                            ? "rotate(180deg)"
+                            : "rotate(0deg)",
+                          transition: "transform 0.3s ease-in-out",
+                        }}
+                      />
                     </div>
                     {openCategory === categoryName && (
                       <div className="product-list">
                         {Array.isArray(product[categoryName])
-                          ? (product[categoryName] as string[]).map((item, idx) => (
-                              <div className="category-item" key={idx}>
-                                <Nav.Link as={Link} to={`/products/${encodeURIComponent(item)}`}>
-                                  {item}
-                                </Nav.Link>
-                              </div>
-                            ))
-                          : Object.entries(product[categoryName] as { [key: string]: string[] }).map(
-                              ([subCategory, items]) => (
-                                <div key={subCategory}>
-                                  <strong>{subCategory}</strong>
-                                  {items.map((item, idx) => (
-                                    <Nav.Link
-                                      className="category-item"
-                                      key={idx}
-                                      as={Link}
-                                      to={`/products/${encodeURIComponent(item)}`}
-                                    >
-                                      {item}
-                                    </Nav.Link>
-                                  ))}
+                          ? (product[categoryName] as string[]).map(
+                              (item, idx) => (
+                                <div className="category-item" key={idx}>
+                                  <Nav.Link
+                                    as={Link}
+                                    to={`/products/${encodeURIComponent(item)}`}
+                                  >
+                                    {item}
+                                  </Nav.Link>
                                 </div>
                               )
-                            )}
+                            )
+                          : Object.entries(
+                              product[categoryName] as {
+                                [key: string]: string[];
+                              }
+                            ).map(([subCategory, items]) => (
+                              <div key={subCategory}>
+                                <b>{subCategory}</b>
+                                {items.map((item, idx) => (
+                                  <Nav.Link
+                                    className="category-item"
+                                    key={idx}
+                                    as={Link}
+                                    to={`/products/${encodeURIComponent(item)}`}
+                                  >
+                                    {item}
+                                  </Nav.Link>
+                                ))}
+                              </div>
+                            ))}
                       </div>
                     )}
                   </div>
@@ -261,7 +283,10 @@ const Products = () => {
             </h5>
             {selectedCategory === "Otomasyon Çözümleri" ? (
               <div className="otomasyon-content mt-4 text-center">
-                <p>Otomasyon çözümlerimiz hakkında detaylı bilgi için PDF'i indirebilirsiniz.</p>
+                <p>
+                  Otomasyon çözümlerimiz hakkında detaylı bilgi için PDF'i
+                  indirebilirsiniz.
+                </p>
                 <Button onClick={handleDownloadPDF} variant="primary">
                   PDF İndir
                 </Button>
@@ -272,7 +297,7 @@ const Products = () => {
                   <Col sm={12} md={6} lg={4} key={index} className="mb-4">
                     <Card style={{ width: "18rem" }}>
                       <Card.Img
-                        className="ms-4"
+                        className="ms-5"
                         variant="top"
                         style={{
                           width: getImageWidth(item),

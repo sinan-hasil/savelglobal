@@ -6,7 +6,7 @@ const Seri1 = () => {
   return (
     <>
       <Container>
-        <h1 className="text-center mb-5">3 Serisi Akaryakıt Pompası</h1>
+        <h1 className="text-center mb-5">1 Serisi Akaryakıt Pompası</h1>
         <Row>
           <Col md={6} className="d-flex justify-content-center">
             <img src={disp1} width={300} height={350} />

@@ -1,4 +1,6 @@
-footer .footer-li {
+footer{
+  margin-top: 300px;
+  .footer-li {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -17,8 +19,12 @@ footer .footer-li {
       }
     }
   }
+} 
 
   @media screen and (max-width: 576px) {
+    footer{
+      margin-top: 2900px !important;
+    }
     .footer-location {
         display: flex;
         flex-direction: column;

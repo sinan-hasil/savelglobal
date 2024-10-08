@@ -6,7 +6,7 @@ const Romork = () => {
   return (
     <>
       <Container>
-        <h1 className="text-center mb-5">Konteyner Tipi İstasyon</h1>
+        <h1 className="text-center mb-5">Römork Tipi İstasyon</h1>
         <Row>
           <Col md={6} className="d-flex justify-content-center">
             <img src={romork1} width={400} />
