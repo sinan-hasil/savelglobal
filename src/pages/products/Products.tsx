@@ -88,6 +88,26 @@ const productDescriptions: { [key: string]: string } = {
     "Yüksek performanslı 7 Serisi akaryakıt pompası.",
   "6 Serisi Akaryakıt Pompası":
     "Daha küçük ölçekli yakıt istasyonları için ideal.",
+  "5 Serisi Akaryakıt Pompası" : "Yüksek Performanslı Yakıt Dağıtımı",
+  "3 Serisi Akaryakıt Pompası" : "Dayanıklı ve Verimli Çözümler",
+  "1 Serisi Akaryakıt Pompası" : "Güçlü Yakıt Dağıtımı, Az Bakım",
+  "7 Serisi LPG Dispenseri" : "Modern Teknoloji ile Güçlü Yakıt Dağıtımı",
+  "3 Serisi LPG Dispenseri" : "Dayanıklı ve Ekonomik Çözümler",
+  "2 Serisi LPG Dispenseri" : "Yüksek Verimlilik ve Güvenilir Performans",
+  "Akaryakıt Tankları" : "Güvenli ve Dayanıklı Depolama Çözümleri",
+  "LPG Tankları" : "Güvenli ve Verimli Depolama",
+  "Jeneratör Tankları" : "Güçlü ve Güvenli Enerji Depolama",
+  "Yakıt Kontrol Sistemleri" : "Akıllı ve Verimli Yakıt Yönetimi",
+  "İstasyon Kurulumu" : "Modern Teknoloji ile Hızlı ve Verimli Çalışma",
+  "Proje Danışmanlık ve Mühendislik" : "Profesyonel Çözümler, Güçlü Sonuçlar",
+  "Servis Hizmetleri" : "Uzman Kadro ile Kaliteli Destek",
+  "Altyapı Tesisat malzemeleri" : "Yüksek Kalite ile Uzun Ömürlü Kullanım",
+  "Yakıt Pompaları" : "Hızlı ve Etkili Yakıt Transferi",
+  "Adblue Ekipmanları" : "Temiz ve Verimli Egzoz Emisyon Kontrolü",
+  "Akaryakıt Ekipmanları" : "Güvenilir ve Dayanıklı Yakıt Çözümleri",
+  "LPG Ekipmanları" : "Güvenli ve Verimli Enerji Çözümler",
+  "Yakıt Sayaçları" : "Hassas Ölçüm ve Güvenilir Performans",
+  "Yağ Sayaçları" : "Verimli Yağ Yönetimi İçin İleri Teknoloji",
 };
 
 const productImages: { [key: string]: string } = {
@@ -199,6 +219,20 @@ const Products = () => {
       "2 Serisi LPG Dispenseri",
     ];
     return narrowWidthItems.includes(item) ? "150px" : "200px";
+  };
+
+  const shouldShowDetailLink = (item: string) => {
+    const noDetailItems = [
+      "Servis Hizmetleri",
+      "Altyapı Tesisat malzemeleri",
+      "Yakıt Pompaları",
+      "Adblue Ekipmanları",
+      "Akaryakıt Ekipmanları",
+      "LPG Ekipmanları",
+      "Yakıt Sayaçları",
+      "Yağ Sayaçları"
+    ];
+    return !noDetailItems.includes(item);
   };
 
   return (
@@ -315,14 +349,16 @@ const Products = () => {
                           {productDescriptions[item] ||
                             "Bu ürün hakkında bilgi mevcut değil."}
                         </Card.Text>
-                        <Button variant="primary">
-                          <Nav.Link
-                            as={Link}
-                            to={`/products/${encodeURIComponent(item)}`}
-                          >
-                            Detaylı Bilgi
-                          </Nav.Link>
-                        </Button>
+                        {shouldShowDetailLink(item) && (
+                          <Button variant="primary">
+                            <Nav.Link
+                              as={Link}
+                              to={`/products/${encodeURIComponent(item)}`}
+                            >
+                              Detaylı Bilgi
+                            </Nav.Link>
+                          </Button>
+                        )}
                       </Card.Body>
                     </Card>
                   </Col>

@@ -1,12 +1,5 @@
 import { useState } from "react";
-import {
-  Card,
-  Col,
-  Container,
-  Nav,
-  Row,
-  Tab,
-} from "react-bootstrap";
+import { Card, Col, Container, Nav, Row, Tab } from "react-bootstrap";
 import logo from "../../icons/logopng.png";
 import card1 from "../../images/kendi-uretimimiz.jpeg";
 import card2 from "../../images/yuksek-teknoloji.png";
@@ -19,7 +12,7 @@ import istasyon from "../../images/yazili-fotolar/İstasyon.png";
 import otomasyon from "../../images/yazili-fotolar/Otomasyon.png";
 import proje from "../../images/yazili-fotolar/Proje-muhendislik.png";
 import imgCardb from "../../images/tasinabilir-istasyon.png";
-import istasyonb from "../../images/istasyon.png";
+import istasyonb from "../../images/station.png";
 import otomasyonb from "../../images/otomasyon.jpg";
 import projeb from "../../images/proje-muhendislik.jpg";
 import otomasyonHero from "../../images/otomasyon-hero.jpg";
@@ -35,8 +28,6 @@ const App = () => {
   const [backgSubtitle, setBackgSubtitle] = useState(
     "Her Yerde Yakıt İstasyonu Çözümü: Güvenli, Hızlı, Taşınabilir!"
   );
-
-  
 
   const changeBackground = (image: string, buttonIndex: number) => {
     setBackgroundImage(image);
@@ -98,7 +89,7 @@ const App = () => {
                 >
                   <Nav.Link
                     eventKey="first"
-                    className="px-4 d-flex gap-2 justify-content-center flex-column"
+                    className="px-4 d-flex mt-2 gap-2 justify-content-center flex-column"
                   >
                     <div className="d-flex justify-content-center w-100">
                       <svg
@@ -158,7 +149,7 @@ const App = () => {
                         </defs>
                       </svg>
                     </div>
-                    <p className="z-3 text-center text-white">
+                    <p className="z-3 text-center text-white m-0">
                       Taşınabilir İstasyon
                     </p>
                   </Nav.Link>
@@ -175,7 +166,7 @@ const App = () => {
                 >
                   <Nav.Link
                     eventKey="second"
-                    className="px-4 d-flex gap-2 justify-content-center flex-column"
+                    className="px-4 d-flex mt-2 gap-2 justify-content-center flex-column"
                   >
                     <div className="d-flex w-100 justify-content-center">
                       <svg
@@ -204,7 +195,7 @@ const App = () => {
                         />
                       </svg>
                     </div>
-                    <p className="z-3 vtext-center text-white">Dispenserler</p>
+                    <p className="z-3 vtext-center text-white m-0 p-0">Dispenserler</p>
                     {/* İkon */}
                   </Nav.Link>
                 </Nav.Item>
@@ -220,7 +211,7 @@ const App = () => {
                 >
                   <Nav.Link
                     eventKey="third"
-                    className="px-4 d-flex gap-2 justify-content-center flex-column"
+                    className="px-4 d-flex mt-2 gap-2 justify-content-center flex-column"
                   >
                     <div className="d-flex w-100 justify-content-center">
                       <svg
@@ -253,7 +244,7 @@ const App = () => {
                 >
                   <Nav.Link
                     eventKey="fourth"
-                    className="px-4 d-flex gap-2 justify-content-center flex-column"
+                    className="px-4 d-flex mt-2 gap-2 justify-content-center flex-column"
                   >
                     <div className="d-flex w-100 justify-content-center">
                       <svg
@@ -292,7 +283,7 @@ const App = () => {
                 >
                   <Nav.Link
                     eventKey="fifth"
-                    className="px-4 d-flex gap-2 justify-content-center flex-column"
+                    className="px-4 d-flex mt-2 gap-2 justify-content-center flex-column"
                   >
                     <div className="d-flex w-100 justify-content-center">
                       <svg
@@ -329,7 +320,7 @@ const App = () => {
                 >
                   <Nav.Link
                     eventKey="sixth"
-                    className="px-4 d-flex gap-2 justify-content-center flex-column"
+                    className="px-4 d-flex mt-2 gap-2 justify-content-center flex-column"
                   >
                     <div className="d-flex w-100 justify-content-center">
                       <svg
@@ -377,8 +368,11 @@ const App = () => {
               </Nav>
               <Tab.Content>
                 <Tab.Pane eventKey="first">
-                  <Container fluid className="d-flex align-items-center justify-content-between">
-                    <Row className="w-100 d-flex justify-content-between">
+                  <Container
+                    fluid
+                    className="d-flex align-items-center justify-content-between"
+                  >
+                    <Row className="w-100 d-flexx x  justify-content-between">
                       <Col sm={12} md={6}>
                         <div className="icon-explanation">
                           <h5 className="z-3 text-white">
@@ -691,13 +685,13 @@ const App = () => {
               md={6}
               lg={6}
               className="p-0 d-flex justify-content-center align-items-center image-container"
-              onMouseEnter={() => changeBackground(imgCardb, 1)}
               style={{
                 backgroundColor: selectedButton === 1 ? "" : "",
               }}
             >
               <div className="image-wrapper">
                 <img
+                  onMouseEnter={() => changeBackground(imgCardb, 1)}
                   src={imgCard}
                   className="img-fluid img-ortak"
                   alt="Image 1"
@@ -710,10 +704,10 @@ const App = () => {
               md={6}
               lg={6}
               className="p-0 d-flex justify-content-center align-items-center image-container"
-              onMouseEnter={() => changeBackground(istasyonb, 2)}
             >
               <div className="image-wrapper">
                 <img
+                  onMouseEnter={() => changeBackground(istasyonb, 2)}
                   src={istasyon}
                   className="img-fluid img-ortak"
                   alt="Image 2"
@@ -726,10 +720,10 @@ const App = () => {
               md={6}
               lg={6}
               className="p-0 d-flex justify-content-center align-items-center image-container"
-              onMouseEnter={() => changeBackground(otomasyonb, 3)}
             >
               <div className="image-wrapper">
                 <img
+                  onMouseEnter={() => changeBackground(otomasyonb, 3)}
                   src={otomasyon}
                   className="img-3 img-fluid img-ortak"
                   alt="Image 3"
@@ -742,10 +736,10 @@ const App = () => {
               md={6}
               lg={6}
               className="p-0 d-flex justify-content-center align-items-center image-container"
-              onMouseEnter={() => changeBackground(projeb, 4)}
             >
               <div className="image-wrapper">
                 <img
+                  onMouseEnter={() => changeBackground(projeb, 4)}
                   src={proje}
                   className="img-4 img-fluid img-ortak"
                   alt="Image 4"
@@ -755,7 +749,6 @@ const App = () => {
           </Row>
         </Container>
       </div>
-
     </>
   );
 };

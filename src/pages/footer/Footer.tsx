@@ -6,10 +6,15 @@ import { FaFacebookF } from "react-icons/fa6";
 import gamLogo from "../../images/gamino-logo.png";
 import logo from "../../icons/logopng.png";
 import "./footer.css"
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const location = useLocation();
+  const isProductsPage = location.pathname === "/products";
   return (
-    <footer className="bg-dark py-4">
+    <footer style={{
+      marginTop: isProductsPage ? "300px" : "0"
+    }} className="bg-dark py-4">
         <Container>
           <img src={logo} width={150} />
 
