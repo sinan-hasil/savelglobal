@@ -158,7 +158,7 @@ const Products = () => {
       } else if (typeof productItems === "object") {
         const subItems = Object.values(productItems).flat();
         setCategoryItems(subItems);
-      }
+      };
     }
   };
 
