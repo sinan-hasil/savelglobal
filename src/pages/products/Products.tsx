@@ -17,13 +17,13 @@ import img14 from "../../images/araclar/yakıtkontrolsistemi.png";
 import img15 from "../../images/araclar/istasyonkurulum.jpg";
 import img16 from "../../images/araclar/projedanismanlik.jpg";
 import img17 from "../../images/araclar/helpdesk.png";
-import img18 from "../../images/araclar/altyapıtesisat.png"
-import img19 from "../../images/araclar/pompa.webp"
-import img20 from "../../images/araclar/adblue.png"
-import img21 from "../../images/araclar/akarykitekipmani.jpg"
-import img22 from "../../images/araclar/lpgekipmani.webp"
-import img23 from "../../images/araclar/yakitsayac.webp"
-import img24 from "../../images/araclar/yağsayac.webp"
+import img18 from "../../images/araclar/altyapıtesisat.png";
+import img19 from "../../images/araclar/pompa.webp";
+import img20 from "../../images/araclar/adblue.png";
+import img21 from "../../images/araclar/akarykitekipmani.jpg";
+import img22 from "../../images/araclar/lpgekipmani.webp";
+import img23 from "../../images/araclar/yakitsayac.webp";
+import img24 from "../../images/araclar/yağsayac.webp";
 import { IoIosArrowDown } from "react-icons/io";
 import "./products.css";
 
@@ -88,26 +88,26 @@ const productDescriptions: { [key: string]: string } = {
     "Yüksek performanslı 7 Serisi akaryakıt pompası.",
   "6 Serisi Akaryakıt Pompası":
     "Daha küçük ölçekli yakıt istasyonları için ideal.",
-  "5 Serisi Akaryakıt Pompası" : "Yüksek Performanslı Yakıt Dağıtımı",
-  "3 Serisi Akaryakıt Pompası" : "Dayanıklı ve Verimli Çözümler",
-  "1 Serisi Akaryakıt Pompası" : "Güçlü Yakıt Dağıtımı, Az Bakım",
-  "7 Serisi LPG Dispenseri" : "Modern Teknoloji ile Güçlü Yakıt Dağıtımı",
-  "3 Serisi LPG Dispenseri" : "Dayanıklı ve Ekonomik Çözümler",
-  "2 Serisi LPG Dispenseri" : "Yüksek Verimlilik ve Güvenilir Performans",
-  "Akaryakıt Tankları" : "Güvenli ve Dayanıklı Depolama Çözümleri",
-  "LPG Tankları" : "Güvenli ve Verimli Depolama",
-  "Jeneratör Tankları" : "Güçlü ve Güvenli Enerji Depolama",
-  "Yakıt Kontrol Sistemleri" : "Akıllı ve Verimli Yakıt Yönetimi",
-  "İstasyon Kurulumu" : "Modern Teknoloji ile Hızlı ve Verimli Çalışma",
-  "Proje Danışmanlık ve Mühendislik" : "Profesyonel Çözümler, Güçlü Sonuçlar",
-  "Servis Hizmetleri" : "Uzman Kadro ile Kaliteli Destek",
-  "Altyapı Tesisat malzemeleri" : "Yüksek Kalite ile Uzun Ömürlü Kullanım",
-  "Yakıt Pompaları" : "Hızlı ve Etkili Yakıt Transferi",
-  "Adblue Ekipmanları" : "Temiz ve Verimli Egzoz Emisyon Kontrolü",
-  "Akaryakıt Ekipmanları" : "Güvenilir ve Dayanıklı Yakıt Çözümleri",
-  "LPG Ekipmanları" : "Güvenli ve Verimli Enerji Çözümler",
-  "Yakıt Sayaçları" : "Hassas Ölçüm ve Güvenilir Performans",
-  "Yağ Sayaçları" : "Verimli Yağ Yönetimi İçin İleri Teknoloji",
+  "5 Serisi Akaryakıt Pompası": "Yüksek Performanslı Yakıt Dağıtımı",
+  "3 Serisi Akaryakıt Pompası": "Dayanıklı ve Verimli Çözümler",
+  "1 Serisi Akaryakıt Pompası": "Güçlü Yakıt Dağıtımı, Az Bakım",
+  "7 Serisi LPG Dispenseri": "Modern Teknoloji ile Güçlü Yakıt Dağıtımı",
+  "3 Serisi LPG Dispenseri": "Dayanıklı ve Ekonomik Çözümler",
+  "2 Serisi LPG Dispenseri": "Yüksek Verimlilik ve Güvenilir Performans",
+  "Akaryakıt Tankları": "Güvenli ve Dayanıklı Depolama Çözümleri",
+  "LPG Tankları": "Güvenli ve Verimli Depolama",
+  "Jeneratör Tankları": "Güçlü ve Güvenli Enerji Depolama",
+  "Yakıt Kontrol Sistemleri": "Akıllı ve Verimli Yakıt Yönetimi",
+  "İstasyon Kurulumu": "Modern Teknoloji ile Hızlı ve Verimli Çalışma",
+  "Proje Danışmanlık ve Mühendislik": "Profesyonel Çözümler, Güçlü Sonuçlar",
+  "Servis Hizmetleri": "Uzman Kadro ile Kaliteli Destek",
+  "Altyapı Tesisat malzemeleri": "Yüksek Kalite ile Uzun Ömürlü Kullanım",
+  "Yakıt Pompaları": "Hızlı ve Etkili Yakıt Transferi",
+  "Adblue Ekipmanları": "Temiz ve Verimli Egzoz Emisyon Kontrolü",
+  "Akaryakıt Ekipmanları": "Güvenilir ve Dayanıklı Yakıt Çözümleri",
+  "LPG Ekipmanları": "Güvenli ve Verimli Enerji Çözümler",
+  "Yakıt Sayaçları": "Hassas Ölçüm ve Güvenilir Performans",
+  "Yağ Sayaçları": "Verimli Yağ Yönetimi İçin İleri Teknoloji",
 };
 
 const productImages: { [key: string]: string } = {
@@ -128,13 +128,13 @@ const productImages: { [key: string]: string } = {
   "İstasyon Kurulumu": img15,
   "Proje Danışmanlık ve Mühendislik": img16,
   "Servis Hizmetleri": img17,
-  "Altyapı Tesisat malzemeleri" : img18,
-  "Yakıt Pompaları" : img19,
-  "Adblue Ekipmanları" : img20,
-  "Akaryakıt Ekipmanları" : img21,
-  "LPG Ekipmanları" : img22,
-  "Yakıt Sayaçları" : img23,
-  "Yağ Sayaçları" : img24,
+  "Altyapı Tesisat malzemeleri": img18,
+  "Yakıt Pompaları": img19,
+  "Adblue Ekipmanları": img20,
+  "Akaryakıt Ekipmanları": img21,
+  "LPG Ekipmanları": img22,
+  "Yakıt Sayaçları": img23,
+  "Yağ Sayaçları": img24,
 };
 
 const Products = () => {
@@ -178,7 +178,7 @@ const Products = () => {
       } else if (typeof productItems === "object") {
         const subItems = Object.values(productItems).flat();
         setCategoryItems(subItems);
-      };
+      }
     }
   };
 
@@ -230,9 +230,23 @@ const Products = () => {
       "Akaryakıt Ekipmanları",
       "LPG Ekipmanları",
       "Yakıt Sayaçları",
-      "Yağ Sayaçları"
+      "Yağ Sayaçları",
     ];
     return !noDetailItems.includes(item);
+  };
+
+  const shouldShowDetailLink1 = (item: string) => {
+    const noDetailItems1 = [
+      "Servis Hizmetleri",
+      "Altyapı Tesisat malzemeleri",
+      "Yakıt Pompaları",
+      "Adblue Ekipmanları",
+      "Akaryakıt Ekipmanları",
+      "LPG Ekipmanları",
+      "Yakıt Sayaçları",
+      "Yağ Sayaçları",
+    ];
+    return !noDetailItems1.includes(item);
   };
 
   return (
@@ -261,9 +275,10 @@ const Products = () => {
                       <p>{categoryName}</p>
                       <IoIosArrowDown
                         style={{
-                          transform: openCategory === categoryName
-                            ? "rotate(180deg)"
-                            : "rotate(0deg)",
+                          transform:
+                            openCategory === categoryName
+                              ? "rotate(180deg)"
+                              : "rotate(0deg)",
                           transition: "transform 0.3s ease-in-out",
                         }}
                       />
@@ -274,12 +289,18 @@ const Products = () => {
                           ? (product[categoryName] as string[]).map(
                               (item, idx) => (
                                 <div className="category-item" key={idx}>
-                                  <Nav.Link
-                                    as={Link}
-                                    to={`/products/${encodeURIComponent(item)}`}
-                                  >
-                                    {item}
-                                  </Nav.Link>
+                                  {shouldShowDetailLink1(item) ? (
+                                    <Nav.Link
+                                      as={Link}
+                                      to={`/products/${encodeURIComponent(
+                                        item
+                                      )}`}
+                                    >
+                                      {item}
+                                    </Nav.Link>
+                                  ) : (
+                                    <span>{item}</span> // Link yerine sadece metni gösteriyoruz.
+                                  )}
                                 </div>
                               )
                             )
