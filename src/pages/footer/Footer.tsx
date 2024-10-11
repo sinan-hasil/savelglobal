@@ -3,7 +3,6 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa6";
-import gamLogo from "../../images/gamino-logo.png";
 import logo from "../../icons/logopng.png";
 import { LiaFaxSolid } from "react-icons/lia";
 
@@ -69,7 +68,6 @@ const Footer = () => {
               </p>
             </div>
             <Nav.Link href="https://www.gamino.tech/">
-              <img src={gamLogo} width={110} height={30} />
             </Nav.Link>
           </div>
 
