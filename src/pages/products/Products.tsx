@@ -88,24 +88,24 @@ const productDescriptions: { [key: string]: string } = {
     "Yüksek performanslı 7 Serisi akaryakıt pompası.",
   "6 Serisi Akaryakıt Pompası":
     "Daha küçük ölçekli yakıt istasyonları için ideal.",
-  "5 Serisi Akaryakıt Pompası": "Yüksek Performanslı Yakıt Dağıtımı",
-  "3 Serisi Akaryakıt Pompası": "Dayanıklı ve Verimli Çözümler",
-  "1 Serisi Akaryakıt Pompası": "Güçlü Yakıt Dağıtımı, Az Bakım",
+  "5 Serisi Akaryakıt Pompası": "Yüksek Performanslı ve Dayanıklı 5. Seri Pompalar",
+  "3 Serisi Akaryakıt Pompası": "Verimli ve Güvenilir 3. Seri Akaryakıt Pompaları",
+  "1 Serisi Akaryakıt Pompası": "Ekonomik ve Kompakt 1. Seri Pompalar",
   "7 Serisi LPG Dispenseri": "Modern Teknoloji ile Güçlü Yakıt Dağıtımı",
-  "3 Serisi LPG Dispenseri": "Dayanıklı ve Ekonomik Çözümler",
+  "3 Serisi LPG Dispenseri": "Verimli ve Güvenli 3. Seri LPG Dispenseri",
   "2 Serisi LPG Dispenseri": "Yüksek Verimlilik ve Güvenilir Performans",
-  "Akaryakıt Tankları": "Güvenli ve Dayanıklı Depolama Çözümleri",
+  "Akaryakıt Tankları": "Güvenli ve Dayanıklı Depolama",
   "LPG Tankları": "Güvenli ve Verimli Depolama",
   "Jeneratör Tankları": "Güçlü ve Güvenli Enerji Depolama",
-  "Yakıt Kontrol Sistemleri": "Akıllı ve Verimli Yakıt Yönetimi",
-  "İstasyon Kurulumu": "Modern Teknoloji ile Hızlı ve Verimli Çalışma",
+  "Yakıt Kontrol Sistemleri": "Yakıt Kontrol Sistemleri ile Hassas, Güvenli ve Verimli Yakıt Yönetimi Çözümleri",
+  "İstasyon Kurulumu": "Hızlı, Güvenli ve Kolay İstasyon Kurulumu Çözümleri ile Verimli Hizmet",
   "Proje Danışmanlık ve Mühendislik": "Profesyonel Çözümler, Güçlü Sonuçlar",
   "Servis Hizmetleri": "Uzman Kadro ile Kaliteli Destek",
   "Altyapı Tesisat malzemeleri": "Yüksek Kalite ile Uzun Ömürlü Kullanım",
-  "Yakıt Pompaları": "Hızlı ve Etkili Yakıt Transferi",
+  "Yakıt Pompaları": "Yüksek Performanslı ve Dayanıklı Yakıt Pompaları",
   "Adblue Ekipmanları": "Temiz ve Verimli Egzoz Emisyon Kontrolü",
   "Akaryakıt Ekipmanları": "Güvenilir ve Dayanıklı Yakıt Çözümleri",
-  "LPG Ekipmanları": "Güvenli ve Verimli Enerji Çözümler",
+  "LPG Ekipmanları": "Verimli ve Güvenilir LPG Ekipmanları Çözümleri",
   "Yakıt Sayaçları": "Hassas Ölçüm ve Güvenilir Performans",
   "Yağ Sayaçları": "Verimli Yağ Yönetimi İçin İleri Teknoloji",
 };
@@ -251,8 +251,8 @@ const Products = () => {
 
   return (
     <>
-      <div className="content">
-        <div className="nav-drop">
+      <div className="content h-100">
+        <div className="nav-drop bg-dark h-100">
           <div onClick={toggleDrop} className="drop-btn">
             <p>ÜRÜN LİSTESİ</p>
             <IoIosArrowDown
@@ -331,7 +331,7 @@ const Products = () => {
             </div>
           )}
         </div>
-        <div className="output">
+        <div className="output h-100">
           <Container>
             <h5 className="mt-3 text-center">
               {selectedCategory ? selectedCategory.toUpperCase() : "Ürünler"}
@@ -371,7 +371,7 @@ const Products = () => {
                             "Bu ürün hakkında bilgi mevcut değil."}
                         </Card.Text>
                         {shouldShowDetailLink(item) && (
-                          <Button variant="primary">
+                          <Button variant="dark">
                             <Nav.Link
                               as={Link}
                               to={`/products/${encodeURIComponent(item)}`}

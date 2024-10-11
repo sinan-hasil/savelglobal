@@ -6,12 +6,12 @@
   display: flex !important;
   width: 100%;
   height: 100vh;
-  margin-bottom: 200px;
 
   .nav-drop {
     width: 400px;
     border-right: 1px solid black;
-    height: 137vh;
+    height: 121vh !important;
+    color: white !important;
 
     .drop-btn {
       display: flex;
@@ -42,7 +42,7 @@
         }
       }
       b{
-        color: #6d6b6b;
+        color: #ffffff;
       }
     }
   }
@@ -50,6 +50,12 @@
   .output {
     flex: 1;
     height: 121vh;
+  }
+
+  .card{
+    border: 1px solid black !important;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
 

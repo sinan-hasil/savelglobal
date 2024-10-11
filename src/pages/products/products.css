@@ -6,12 +6,12 @@
   display: flex !important;
   width: 100%;
   height: 100vh;
-  margin-bottom: 200px;
 }
 .content .nav-drop {
   width: 400px;
   border-right: 1px solid black;
-  height: 137vh;
+  height: 121vh !important;
+  color: white !important;
 }
 .content .nav-drop .drop-btn {
   display: flex;
@@ -41,11 +41,16 @@
   color: black;
 }
 .content .nav-drop .drop-content b {
-  color: #6d6b6b;
+  color: #ffffff;
 }
 .content .output {
   flex: 1;
   height: 121vh;
+}
+.content .card {
+  border: 1px solid black !important;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 @media screen and (max-width: 576px) {
