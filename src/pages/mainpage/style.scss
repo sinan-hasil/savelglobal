@@ -1,9 +1,23 @@
+.wp-div{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  background-color: #24cc63;
+  padding: 20px;
+  border-radius: 50%;
+  .wp-icon{
+    font-size: 33px;
+    color: white;
+  }
+}
+
 
 .hero-section {
   background-image: url("../../images/tasinabilir-istasyon-2.png");
   background-size: cover;
   background-position: center;
-  height: 90vh;
+  height: 91vh !important;
   position: relative;
   &::before {
     content: "";

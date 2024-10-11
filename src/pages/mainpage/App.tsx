@@ -19,11 +19,17 @@ import otomasyonHero from "../../images/otomasyon-hero.jpg";
 import dispenser from "../../images/dispenser.png";
 import tank from "../../images/tank.png";
 import endustriHero from "../../images/endustri-hero.jpg";
+import { FaWhatsapp } from "react-icons/fa";
+import { IoIosArrowRoundForward } from "react-icons/io";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 const App = () => {
   const [backgroundImage, setBackgroundImage] = useState(imgCardb);
+  const [backgroundImage1, setBackgroundImage1] = useState(imgCardb);
   const [selectedButton, setSelectedButton] = useState(1);
+  const [selectedButton1, setSelectedButton1] = useState(1);
+  const [link, setLink] = useState("Detaylı bilgi için");
   const [backgTitle, setBackgTitle] = useState("Taşınabilir İstasyon");
   const [backgSubtitle, setBackgSubtitle] = useState(
     "Her Yerde Yakıt İstasyonu Çözümü: Güvenli, Hızlı, Taşınabilir!"
@@ -38,22 +44,42 @@ const App = () => {
     image: string,
     buttonIndex: number,
     title: string,
-    subtitle: string
+    subtitle: string,
+    linkparams: string
   ) => {
-    setBackgroundImage(image);
-    setSelectedButton(buttonIndex);
+    setBackgroundImage1(image);
+    setSelectedButton1(buttonIndex);
     setBackgTitle(title);
     setBackgSubtitle(subtitle);
+    setLink(linkparams);
   };
 
+  const handleWhastapp = () => {
+    const phoneNumber = "+905513911163";
+    const url =
+      "https://wa.me/" +
+      phoneNumber +
+      "?text=" +
+      "Merhaba! Ürünleriniz hakkında bilgi almak istiyorum.";
+    window.open(url, "_blank")?.focus();
+  };
+
+  function getLink(asd: number): string | undefined {
+    return asd >= 1 && asd <= 6 ? "/products" : undefined;
+  }
+  
   return (
     <>
+      <div onClick={handleWhastapp} className="wp-div">
+        <FaWhatsapp className="wp-icon" />
+      </div>
+
       <div
         className="hero-section"
         style={{
           width: "100%",
           height: "100vh",
-          backgroundImage: `url(${backgroundImage})`,
+          backgroundImage: `url(${backgroundImage1})`,
           backgroundSize: "cover",
           maxWidth: "100%",
           maxHeight: "100vh",
@@ -65,6 +91,15 @@ const App = () => {
           <Container className="z-3 title-container">
             <h1 className="z-3 text-white">{backgTitle}</h1>
             <p className="z-3 text-white">{backgSubtitle}</p>
+            {getLink(selectedButton1) && (
+            <Nav.Link
+            className="text-white border-bottom d-inline"
+            as={Link}
+            to={getLink(selectedButton1) || ""}
+          >
+            {link} <IoIosArrowRoundForward />
+          </Nav.Link>
+          )}
           </Container>
         </div>
 
@@ -83,7 +118,8 @@ const App = () => {
                       imgCardb,
                       1,
                       "Taşınabilir İstasyon",
-                      "Her Yerde Yakıt İstasyonu Çözümü: Güvenli, Hızlı, Taşınabilir!"
+                      "Her Yerde Yakıt İstasyonu Çözümü: Güvenli, Hızlı, Taşınabilir!",
+                      link
                     )
                   }
                 >
@@ -160,7 +196,8 @@ const App = () => {
                       dispenser,
                       2,
                       "Dispenser Çözümleri",
-                      "Dayanıklı, Verimli ve Güvenilir Yakıt Dağıtımı!"
+                      "Dayanıklı, Verimli ve Güvenilir Yakıt Dağıtımı!",
+                      link
                     )
                   }
                 >
@@ -195,7 +232,9 @@ const App = () => {
                         />
                       </svg>
                     </div>
-                    <p className="z-3 vtext-center text-white m-0 p-0">Dispenserler</p>
+                    <p className="z-3 vtext-center text-white m-0 p-0">
+                      Dispenserler
+                    </p>
                     {/* İkon */}
                   </Nav.Link>
                 </Nav.Item>
@@ -205,7 +244,8 @@ const App = () => {
                       tank,
                       3,
                       "Yakıt Tankları",
-                      "Güvenli Depolama, Maksimum Dayanıklılık!"
+                      "Güvenli Depolama, Maksimum Dayanıklılık!",
+                      link
                     )
                   }
                 >
@@ -238,7 +278,8 @@ const App = () => {
                       otomasyonHero,
                       4,
                       "Otomasyon Sistemleri",
-                      "Kesintisiz Kontrol, Maksimum Verimlilik!"
+                      "Kesintisiz Kontrol, Maksimum Verimlilik!",
+                      link
                     )
                   }
                 >
@@ -277,7 +318,8 @@ const App = () => {
                       endustriHero,
                       5,
                       "Endüstriyel Çözümler",
-                      "Güçlü ve Verimli Altyapı ile Üstün Performans!"
+                      "Güçlü ve Verimli Altyapı ile Üstün Performans!",
+                      link
                     )
                   }
                 >
@@ -314,7 +356,8 @@ const App = () => {
                       card1,
                       6,
                       "Savel Shop",
-                      "Kalite ve Güvenilirlikte Bir Adım Önde!"
+                      "Kalite ve Güvenilirlikte Bir Adım Önde!",
+                      link
                     )
                   }
                 >
@@ -380,7 +423,7 @@ const App = () => {
                             İstasyon
                           </h5>
                           <p className="z-3 explanation">
-                            Genelensel akaryakıt istasyonlarına alternatif{" "}
+                            Geleneksel akaryakıt istasyonlarına alternatif{" "}
                             <br />
                             maliyeti düşük, dinamik ve güvenirliği yüksek <br />{" "}
                             olan mobil istasyon çözümleridir.
@@ -395,8 +438,8 @@ const App = () => {
                         <img
                           src={logo}
                           className="z-3"
-                          width={95}
-                          height={20}
+                          width={135}
+                          height={30}
                         />
                       </Col>
                     </Row>
@@ -427,8 +470,8 @@ const App = () => {
                         <img
                           src={logo}
                           className="z-3"
-                          width={95}
-                          height={20}
+                          width={135}
+                          height={30}
                         />
                       </Col>
                     </Row>
@@ -460,8 +503,8 @@ const App = () => {
                         <img
                           src={logo}
                           className="z-3"
-                          width={95}
-                          height={20}
+                          width={135}
+                          height={30}
                         />
                       </Col>
                     </Row>
@@ -493,8 +536,8 @@ const App = () => {
                         <img
                           src={logo}
                           className="z-3"
-                          width={95}
-                          height={20}
+                          width={135}
+                          height={30}
                         />
                       </Col>
                     </Row>
@@ -524,8 +567,8 @@ const App = () => {
                         <img
                           src={logo}
                           className="z-3"
-                          width={95}
-                          height={20}
+                          width={135}
+                          height={30}
                         />
                       </Col>
                     </Row>
@@ -555,8 +598,8 @@ const App = () => {
                         <img
                           src={logo}
                           className="z-3"
-                          width={95}
-                          height={20}
+                          width={135}
+                          height={30}
                         />
                       </Col>
                     </Row>

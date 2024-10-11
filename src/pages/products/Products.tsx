@@ -24,7 +24,9 @@ import img21 from "../../images/araclar/akarykitekipmani.jpg";
 import img22 from "../../images/araclar/lpgekipmani.webp";
 import img23 from "../../images/araclar/yakitsayac.webp";
 import img24 from "../../images/araclar/yağsayac.webp";
+import img25 from "../../images/araclar/3 serisi dar 1.png" 
 import { IoIosArrowDown } from "react-icons/io";
+import { FaWhatsapp } from "react-icons/fa";
 import "./products.css";
 
 type ProductItem = string[] | { [key: string]: string[] };
@@ -116,11 +118,11 @@ const productImages: { [key: string]: string } = {
   "7 Serisi Akaryakıt Pompası": img7,
   "6 Serisi Akaryakıt Pompası": img6,
   "5 Serisi Akaryakıt Pompası": img5,
-  "3 Serisi Akaryakıt Pompası": img6,
+  "3 Serisi Akaryakıt Pompası": img25,
   "1 Serisi Akaryakıt Pompası": img0,
-  "7 Serisi LPG Dispenseri": img8,
+  "7 Serisi LPG Dispenseri": img10,
   "3 Serisi LPG Dispenseri": img9,
-  "2 Serisi LPG Dispenseri": img10,
+  "2 Serisi LPG Dispenseri": img8,
   "Akaryakıt Tankları": img11,
   "LPG Tankları": img12,
   "Jeneratör Tankları": img13,
@@ -249,8 +251,21 @@ const Products = () => {
     return !noDetailItems1.includes(item);
   };
 
+  const handleWhastapp = () => {
+    const phoneNumber = "+905513911163";
+    const url =
+      "https://wa.me/" +
+      phoneNumber +
+      "?text=" +
+      "Merhaba! Ürünleriniz hakkında bilgi almak istiyorum.";
+    window.open(url, "_blank")?.focus();
+  };
+
   return (
     <>
+    <div onClick={handleWhastapp} className="wp-div">
+        <FaWhatsapp className="wp-icon" />
+      </div>
       <div className="content h-100">
         <div className="nav-drop bg-dark h-100">
           <div onClick={toggleDrop} className="drop-btn">

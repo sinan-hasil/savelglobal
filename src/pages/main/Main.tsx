@@ -119,6 +119,9 @@ const Main = () => {
                 >
                   Anasayfa
                 </Nav.Link>
+                <Nav.Link as={Link} to={"/hakkimizda"} className="text-white">
+                 Hakkımızda 
+                </Nav.Link>
                 <Nav.Link
                   className="text-white d-none d-sm-block"
                   as={Link}

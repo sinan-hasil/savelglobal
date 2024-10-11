@@ -5,6 +5,8 @@ import { FaLinkedinIn } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa6";
 import gamLogo from "../../images/gamino-logo.png";
 import logo from "../../icons/logopng.png";
+import { LiaFaxSolid } from "react-icons/lia";
+
 import "./footer.css"
 
 const Footer = () => {
@@ -31,6 +33,11 @@ const Footer = () => {
               />
             </svg>
             <p className="text-white">0262 658 00 70</p>
+          </div>
+
+          <div className="d-flex align-items-center gap-3 py-2">
+            <LiaFaxSolid  className="text-white fs-4" />
+            <p className="text-white m-0">0262 658 00 71</p>
           </div>
 
           <div className="w-100 d-flex justify-content-between mt-2 footer-location">
@@ -84,7 +91,7 @@ const Footer = () => {
               </svg>
               <p className="text-white">info@savel.com.tr</p>
             </div>
-            <p className="text-white">2024©Tüm Hakları Saklıdır</p>
+            <p className="text-white">2024©Tüm Hakları Savel Global tarafından Saklıdır</p>
             <div className="text-white d-flex gap-3 contact-icon">
               <FaXTwitter />
               <FaInstagram />
@@ -94,7 +101,6 @@ const Footer = () => {
           </div>
           <div className="footer-bottom-logo d-flex justify-content-center align-items-center d-md-none d-sm-block">
             <img src={logo} width={100} className="mt-1" height={20} />
-            <img src={gamLogo} width={110} height={30} />
           </div>
         </Container>
       </footer>

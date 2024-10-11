@@ -32,6 +32,9 @@
   justify-content: space-between;
   padding: 5px 15px;
 }
+.content .nav-drop .drop-content .category-title p {
+  cursor: pointer;
+}
 .content .nav-drop .drop-content .category-item {
   color: #aaa;
   font-size: 15px;

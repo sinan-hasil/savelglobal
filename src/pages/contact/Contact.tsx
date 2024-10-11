@@ -4,13 +4,11 @@ import { SiHomeassistantcommunitystore } from "react-icons/si";
 import { BsTelephone } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
 
-
-
-
 const Contact = () => {
   const [name, setName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
+  const [areaText, setAreaText] = useState<string>("")
 
   const handleWhatsAppSend = (event: React.FormEvent) => {
     event.preventDefault();
@@ -28,7 +26,8 @@ const Contact = () => {
       `${lastName} - ` +
       "\n" +
       "Telefon: " +
-      `${phone} - `;
+      `${phone} - 
+      "Talep: " + ${areaText}`;
 
     window.open(url, "_blank")?.focus();
   };
@@ -87,6 +86,14 @@ const Contact = () => {
                 onChange={(e) => setPhone(e.target.value)}
               />
             </Col>
+            <Col>
+            <small>Talepleriniz</small>
+              <Form.Control
+                as="textarea"
+                style={{ height: "100px", marginBottom: "20px" }}
+                onChange={(e) => setAreaText(e.target.value)}
+              />
+            </Col>
           </Row>
           <Button type="submit">Gönder</Button>
         </form>
@@ -95,19 +102,22 @@ const Contact = () => {
       <Container className="border-top p-5">
         <Row>
           <Col>
-          <iframe
-          src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d96785.69263330118!2d29.78370754638406!3d40.70584360566332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x14cb4f94f9856835%3A0x9acb2a6037c7f064!2sSepetlip%C4%B1nar%2C%20No%3A110%20D130%2C%2041275%20Ba%C5%9Fiskele%2FKocaeli!3m2!1d40.705872899999996!2d29.866108399999998!5e0!3m2!1str!2str!4v1728308484911!5m2!1str!2str"
-          width="600"
-          height="450"
-          style={{border: "0"}}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d96785.69263330118!2d29.78370754638406!3d40.70584360566332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x14cb4f94f9856835%3A0x9acb2a6037c7f064!2sSepetlip%C4%B1nar%2C%20No%3A110%20D130%2C%2041275%20Ba%C5%9Fiskele%2FKocaeli!3m2!1d40.705872899999996!2d29.866108399999998!5e0!3m2!1str!2str!4v1728308484911!5m2!1str!2str"
+              width="600"
+              height="450"
+              style={{ border: "0" }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </Col>
           <Col className="d-flex justify-content-center flex-column align-items-center gap-4">
             <div className="d-flex align-items-center gap-3">
               <SiHomeassistantcommunitystore />
-              <p className="p-0 m-0">Sepetlipınar Mah. D-130 Karayolu Cad. No:110 Başiskele / Kocaeli 41275</p>
+              <p className="p-0 m-0">
+                Sepetlipınar Mah. D-130 Karayolu Cad. No:110 Başiskele / Kocaeli
+                41275
+              </p>
             </div>
             <div className="d-flex align-items-center gap-3">
               <BsTelephone />

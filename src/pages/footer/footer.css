@@ -18,6 +18,15 @@ footer .footer-li .footer-icons svg {
   color: white;
 }
 
+.gamlogo {
+  opacity: 0 !important;
+  width: 110px;
+  height: 30px;
+}
+.gamlogo:hover {
+  opacity: 1 !important;
+}
+
 @media screen and (max-width: 576px) {
   footer {
     margin-top: 2900px !important;

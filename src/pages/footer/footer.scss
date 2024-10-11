@@ -18,7 +18,17 @@ footer{
       }
     }
   }
+  
 } 
+
+.gamlogo{
+  opacity: 0 !important;
+  width: 110px;
+  height: 30px;
+  &:hover{
+    opacity: 1 !important;
+  }
+}
 
   @media screen and (max-width: 576px) {
     footer{

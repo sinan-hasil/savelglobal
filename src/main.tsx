@@ -7,7 +7,7 @@ import Products from "./pages/products/Products.js";
 import ProductDetail from "./pages/detail/ProductDetail.tsx";
 import Contact from "./pages/contact/Contact.tsx";
 import Main from "./pages/main/Main.tsx";
-
+import Hakkimizda from "./pages/hakkimizda/Hakkimizda.tsx";
 
 const router = createBrowserRouter([
   {
@@ -23,17 +23,17 @@ const router = createBrowserRouter([
         element: <Products />,
       },
       {
-        path: "/product/:id",
-        element: <ProductDetail />,
-      },
-      {
         path: "/contact",
         element: <Contact />,
       },
       {
         path: "/products/:productName",
         element: <ProductDetail />,
-      },      
+      },
+      {
+        path: "/hakkimizda",
+        element: <Hakkimizda />
+      }
     ],
   },
 ]);

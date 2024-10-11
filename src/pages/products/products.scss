@@ -32,6 +32,9 @@
         display: flex;
         justify-content: space-between;
         padding: 5px 15px;
+        p{
+          cursor: pointer;
+        }
       }
       .category-item{
         color: #aaa;
