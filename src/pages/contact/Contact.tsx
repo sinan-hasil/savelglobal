@@ -12,7 +12,7 @@ const Contact = () => {
 
   const handleWhatsAppSend = (event: React.FormEvent) => {
     event.preventDefault();
-    const phoneNumber = "+905513911163";
+    const phoneNumber = "+905072992776";
     const url =
       "https://wa.me/" +
       phoneNumber +
