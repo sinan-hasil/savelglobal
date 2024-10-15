@@ -29,7 +29,7 @@ footer .footer-li .footer-icons svg {
 
 @media screen and (max-width: 576px) {
   footer {
-    margin-top: 2900px !important;
+    margin: 0 !important;
   }
   .footer-location {
     display: flex;

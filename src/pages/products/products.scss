@@ -1,3 +1,9 @@
+.wp-div {
+  position: fixed !important;
+  bottom: 30px !important;
+  right: 30px !important;
+}
+
 .card-img-top {
   border-radius: 5px !important;
 }
@@ -8,10 +14,11 @@
   height: 100vh;
 
   .nav-drop {
-    width: 400px;
     border-right: 1px solid black;
     height: 121vh !important;
     color: white !important;
+    width: 400px !important; 
+    transition: width 0.3s ease;
 
     .drop-btn {
       display: flex;
@@ -24,27 +31,27 @@
       }
     }
 
-    .drop-content{
+    .drop-content {
       display: flex;
       flex-direction: column;
 
-      .category-title{
+      .category-title {
         display: flex;
         justify-content: space-between;
         padding: 5px 15px;
-        p{
+        p {
           cursor: pointer;
         }
       }
-      .category-item{
+      .category-item {
         color: #aaa;
         font-size: 15px;
         transition: 0.2s;
-        &:hover{
+        &:hover {
           color: black;
         }
       }
-      b{
+      b {
         color: #ffffff;
       }
     }
@@ -55,10 +62,22 @@
     height: 121vh;
   }
 
-  .card{
+  .card {
     border: 1px solid black !important;
     padding-top: 20px;
     padding-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .content .nav-drop {
+    width: 300px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content .nav-drop {
+    width: 250px !important;
   }
 }
 
@@ -66,7 +85,15 @@
   .content {
     display: flex;
     flex-direction: column;
+
+    .nav-drop {
+      width: 100% !important;
+      height: auto !important;
+      border-right: none;
+      border-bottom: 1px solid black;
+    }
   }
+
   footer {
     margin-top: 700px !important;
   }

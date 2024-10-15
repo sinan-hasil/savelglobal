@@ -1,3 +1,9 @@
+.wp-div {
+  position: fixed !important;
+  bottom: 30px !important;
+  right: 30px !important;
+}
+
 .card-img-top {
   border-radius: 5px !important;
 }
@@ -8,10 +14,11 @@
   height: 100vh;
 }
 .content .nav-drop {
-  width: 400px;
   border-right: 1px solid black;
   height: 121vh !important;
   color: white !important;
+  width: 400px !important;
+  transition: width 0.3s ease;
 }
 .content .nav-drop .drop-btn {
   display: flex;
@@ -56,10 +63,26 @@
   padding-bottom: 20px;
 }
 
+@media screen and (max-width: 992px) {
+  .content .nav-drop {
+    width: 300px !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .content .nav-drop {
+    width: 250px !important;
+  }
+}
 @media screen and (max-width: 576px) {
   .content {
     display: flex;
     flex-direction: column;
+  }
+  .content .nav-drop {
+    width: 100% !important;
+    height: auto !important;
+    border-right: none;
+    border-bottom: 1px solid black;
   }
   footer {
     margin-top: 700px !important;

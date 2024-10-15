@@ -5,7 +5,7 @@ import Footer from "../footer/Footer";
 import { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
-import "./main.css"
+import "./main.css";
 
 type ProductItem = string[] | { [key: string]: string[] };
 
@@ -86,6 +86,7 @@ const Main = () => {
         replace: true,
       });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.search, navigate]);
 
   const toggleCategory = (category: string) => {
@@ -119,8 +120,8 @@ const Main = () => {
                 >
                   Anasayfa
                 </Nav.Link>
-                <Nav.Link as={Link} to={"/hakkimizda"} className="text-white">
-                 Hakkımızda 
+                <Nav.Link as={Link} to={"/hakkimizda"} className="text-white d-none d-sm-block">
+                  Hakkımızda
                 </Nav.Link>
                 <Nav.Link
                   className="text-white d-none d-sm-block"
@@ -144,7 +145,7 @@ const Main = () => {
                   <RxHamburgerMenu />
                 </Button>
 
-                <Offcanvas show={show} onHide={handleClose}>
+                <Offcanvas className="w-75" show={show} onHide={handleClose}>
                   <Offcanvas.Header closeButton>
                     <Offcanvas.Title className="fw-bold">Savel</Offcanvas.Title>
                   </Offcanvas.Header>
@@ -152,6 +153,13 @@ const Main = () => {
                     <div className="mb-5">
                       <Nav.Link className="text-dark" as={Link} to={"/"}>
                         Anasayfa
+                      </Nav.Link>
+                      <Nav.Link
+                        as={Link}
+                        to={"/hakkimizda"}
+                        className="text-dark"
+                      >
+                        Hakkımızda
                       </Nav.Link>
                       <Nav.Link
                         className="z-3 text-dark"

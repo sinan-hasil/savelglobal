@@ -20,7 +20,7 @@ const Hakkimizda = () => {
 
       <Container className="py-5">
         <h1 className="text-center">Hakkımızda</h1>
-        <p className="px-5 py-5">
+        <p className="px-5 py-3">
           Savel olarak kendimizi Enerji ekipmanları üretici kulvarında
           görmekteyiz. Başlangıç olarak Akaryakıt pompa elektroniği ve Akaryakıt
           otomasyon hizmetleri alanlarında faaliyete başlayan firmamız zamanla
@@ -34,7 +34,7 @@ const Hakkimizda = () => {
         </p>
 
 
-        <p className="px-5 py-5">
+        <p className="px-5 py-3">
           Savel Mobil Enerji İstasyonları konusunda sürekli olarak kendine yeni
           hedefler koymaktadır. Basit tank çözümleriyle başlayan yolumuz bugün
           bir akaryakıt istasyonunda olması gereken her şeyi ihtiva eden
@@ -46,7 +46,7 @@ const Hakkimizda = () => {
           ve ilaveler bizim çözümlerimizde vazgeçilemez ana unsurlardır.
         </p>
 
-        <p className="px-5 py-5">
+        <p className="px-5 py-3">
           Müşteri memnuniyeti bizim için diğer marka değeri taşıyan firmalarda
           olduğu gibi kalite kadar önemli bir unsurdur. Sadece işin bugünü için
           değil yarını içinde kullanıcı hoşnutluğu vazgeçilmez bir Savel

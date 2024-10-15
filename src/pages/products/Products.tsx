@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button, Card, Col, Container, Nav, Row } from "react-bootstrap";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import img0 from "../../images/araclar/1 serisi 2.png";
 import img1 from "../../images/araclar/konteynır tipi.png";
 import img2 from "../../images/araclar/römork tipi.png";
@@ -18,13 +18,13 @@ import img15 from "../../images/araclar/istasyonkurulum.jpg";
 import img16 from "../../images/araclar/projedanismanlik.jpg";
 import img17 from "../../images/araclar/helpdesk.png";
 import img18 from "../../images/araclar/altyapıtesisat.png";
-import img19 from "../../images/araclar/pompa.webp";
+import img19 from "../../images/araclar/pompasd.jpg";
 import img20 from "../../images/araclar/adblue.png";
 import img21 from "../../images/araclar/akarykitekipmani.jpg";
-import img22 from "../../images/araclar/lpgekipmani.webp";
-import img23 from "../../images/araclar/yakitsayac.webp";
-import img24 from "../../images/araclar/yağsayac.webp";
-import img25 from "../../images/araclar/3 serisi dar 1.png" 
+import img22 from "../../images/araclar/LPG ekipmanları.jpg";
+import img23 from "../../images/araclar/yakıt sayaçları.jpg";
+import img24 from "../../images/araclar/yağ sayacı.jpg";
+import img25 from "../../images/araclar/3 serisi dar 1.png";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaWhatsapp } from "react-icons/fa";
 import "./products.css";
@@ -90,8 +90,10 @@ const productDescriptions: { [key: string]: string } = {
     "Yüksek performanslı 7 Serisi akaryakıt pompası.",
   "6 Serisi Akaryakıt Pompası":
     "Daha küçük ölçekli yakıt istasyonları için ideal.",
-  "5 Serisi Akaryakıt Pompası": "Yüksek Performanslı ve Dayanıklı 5. Seri Pompalar",
-  "3 Serisi Akaryakıt Pompası": "Verimli ve Güvenilir 3. Seri Akaryakıt Pompaları",
+  "5 Serisi Akaryakıt Pompası":
+    "Yüksek Performanslı ve Dayanıklı 5. Seri Pompalar",
+  "3 Serisi Akaryakıt Pompası":
+    "Verimli ve Güvenilir 3. Seri Akaryakıt Pompaları",
   "1 Serisi Akaryakıt Pompası": "Ekonomik ve Kompakt 1. Seri Pompalar",
   "7 Serisi LPG Dispenseri": "Modern Teknoloji ile Güçlü Yakıt Dağıtımı",
   "3 Serisi LPG Dispenseri": "Verimli ve Güvenli 3. Seri LPG Dispenseri",
@@ -99,8 +101,10 @@ const productDescriptions: { [key: string]: string } = {
   "Akaryakıt Tankları": "Güvenli ve Dayanıklı Depolama",
   "LPG Tankları": "Güvenli ve Verimli Depolama",
   "Jeneratör Tankları": "Güçlü ve Güvenli Enerji Depolama",
-  "Yakıt Kontrol Sistemleri": "Yakıt Kontrol Sistemleri ile Hassas, Güvenli ve Verimli Yakıt Yönetimi Çözümleri",
-  "İstasyon Kurulumu": "Hızlı, Güvenli ve Kolay İstasyon Kurulumu Çözümleri ile Verimli Hizmet",
+  "Yakıt Kontrol Sistemleri":
+    "Yakıt Kontrol Sistemleri ile Hassas, Güvenli ve Verimli Yakıt Yönetimi Çözümleri",
+  "İstasyon Kurulumu":
+    "Hızlı, Güvenli ve Kolay İstasyon Kurulumu Çözümleri ile Verimli Hizmet",
   "Proje Danışmanlık ve Mühendislik": "Profesyonel Çözümler, Güçlü Sonuçlar",
   "Servis Hizmetleri": "Uzman Kadro ile Kaliteli Destek",
   "Altyapı Tesisat malzemeleri": "Yüksek Kalite ile Uzun Ömürlü Kullanım",
@@ -145,28 +149,12 @@ const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [categoryItems, setCategoryItems] = useState<string[]>([]);
 
-  const location = useLocation();
-  const navigate = useNavigate();
-
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const categoryParam = params.get("category");
-
-    if (categoryParam) {
-      setOpenCategory(categoryParam);
-      setSelectedCategory(categoryParam);
-      updateCategoryItems(categoryParam);
-    } else {
-      const defaultCategory = "Taşınabilir İstasyon";
-      setOpenCategory(defaultCategory);
-      setSelectedCategory(defaultCategory);
-      updateCategoryItems(defaultCategory);
-
-      navigate(`?category=${encodeURIComponent(defaultCategory)}`, {
-        replace: true,
-      });
-    }
-  }, [location.search, navigate]);
+    const defaultCategory = Object.keys(products[0])[0];
+    setOpenCategory(defaultCategory);
+    setSelectedCategory(defaultCategory);
+    updateCategoryItems(defaultCategory);
+  }, []);
 
   const updateCategoryItems = (category: string) => {
     const selectedProduct = products.find(
@@ -193,13 +181,10 @@ const Products = () => {
       setOpenCategory(null);
       setSelectedCategory(null);
       setCategoryItems([]);
-      navigate("", { replace: true });
     } else {
       setOpenCategory(category);
       setSelectedCategory(category);
       updateCategoryItems(category);
-
-      navigate(`?category=${encodeURIComponent(category)}`, { replace: true });
     }
   };
 
@@ -264,147 +249,135 @@ const Products = () => {
   return (
     <>
     <div onClick={handleWhastapp} className="wp-div">
-        <FaWhatsapp className="wp-icon" />
-      </div>
-      <div className="content h-100">
-        <div className="nav-drop bg-dark h-100">
-          <div onClick={toggleDrop} className="drop-btn">
-            <p>ÜRÜN LİSTESİ</p>
-            <IoIosArrowDown
-              style={{
-                transform: showdrop ? "rotate(180deg)" : "rotate(0deg)",
-                transition: "transform 0.3s",
-              }}
-            />
-          </div>
-          {showdrop && (
-            <div className="drop-content">
-              {products.map((product, index) => {
-                const categoryName = Object.keys(product)[0];
-                return (
-                  <div key={index}>
-                    <div
-                      onClick={() => toggleCategory(categoryName)}
-                      className="category-title"
-                    >
-                      <p>{categoryName}</p>
-                      <IoIosArrowDown
-                        style={{
-                          transform:
-                            openCategory === categoryName
-                              ? "rotate(180deg)"
-                              : "rotate(0deg)",
-                          transition: "transform 0.3s ease-in-out",
-                        }}
-                      />
-                    </div>
-                    {openCategory === categoryName && (
-                      <div className="product-list">
-                        {Array.isArray(product[categoryName])
-                          ? (product[categoryName] as string[]).map(
-                              (item, idx) => (
-                                <div className="category-item" key={idx}>
-                                  {shouldShowDetailLink1(item) ? (
-                                    <Nav.Link
-                                      as={Link}
-                                      to={`/products/${encodeURIComponent(
-                                        item
-                                      )}`}
-                                    >
-                                      {item}
-                                    </Nav.Link>
-                                  ) : (
-                                    <span>{item}</span> // Link yerine sadece metni gösteriyoruz.
-                                  )}
-                                </div>
-                              )
-                            )
-                          : Object.entries(
-                              product[categoryName] as {
-                                [key: string]: string[];
-                              }
-                            ).map(([subCategory, items]) => (
-                              <div key={subCategory}>
-                                <b>{subCategory}</b>
-                                {items.map((item, idx) => (
-                                  <Nav.Link
-                                    className="category-item"
-                                    key={idx}
-                                    as={Link}
-                                    to={`/products/${encodeURIComponent(item)}`}
-                                  >
-                                    {item}
-                                  </Nav.Link>
-                                ))}
-                              </div>
-                            ))}
-                      </div>
-                    )}
+      <FaWhatsapp className="wp-icon" />
+    </div>
+    <div className="content h-100">
+      <div className="nav-drop bg-dark w-100">
+        <div onClick={toggleDrop} className="drop-btn">
+          <p>ÜRÜN LİSTESİ</p>
+          <IoIosArrowDown
+            style={{
+              transform: showdrop ? "rotate(180deg)" : "rotate(0deg)",
+              transition: "transform 0.3s",
+            }}
+          />
+        </div>
+        {showdrop && (
+          <div className="drop-content">
+            {products.map((product, index) => {
+              const categoryName = Object.keys(product)[0];
+              return (
+                <div key={index}>
+                  <div
+                    onClick={() => toggleCategory(categoryName)}
+                    className="category-title"
+                  >
+                    <p>{categoryName}</p>
+                    <IoIosArrowDown
+                      style={{
+                        transform:
+                          openCategory === categoryName
+                            ? "rotate(180deg)"
+                            : "rotate(0deg)",
+                        transition: "transform 0.3s ease-in-out",
+                      }}
+                    />
                   </div>
-                );
-              })}
-            </div>
-          )}
-        </div>
-        <div className="output h-100">
-          <Container>
-            <h5 className="mt-3 text-center">
-              {selectedCategory ? selectedCategory.toUpperCase() : "Ürünler"}
-            </h5>
-            {selectedCategory === "Otomasyon Çözümleri" ? (
-              <div className="otomasyon-content mt-4 text-center">
-                <p>
-                  Otomasyon çözümlerimiz hakkında detaylı bilgi için PDF'i
-                  indirebilirsiniz.
-                </p>
-                <Button onClick={handleDownloadPDF} variant="primary">
-                  PDF İndir
-                </Button>
-              </div>
-            ) : (
-              <Row className="mt-5">
-                {categoryItems.map((item, index) => (
-                  <Col sm={12} md={6} lg={4} key={index} className="mb-4">
-                    <Card style={{ width: "18rem" }}>
-                      <Card.Img
-                        className="ms-5"
-                        variant="top"
-                        style={{
-                          width: getImageWidth(item),
-                          height: "150px",
-                          objectFit: "contain",
-                        }}
-                        src={
-                          productImages[item] ||
-                          `https://via.placeholder.com/300x200?text=${item}`
-                        }
-                      />
-                      <Card.Body>
-                        <Card.Title>{item}</Card.Title>
-                        <Card.Text>
-                          {productDescriptions[item] ||
-                            "Bu ürün hakkında bilgi mevcut değil."}
-                        </Card.Text>
-                        {shouldShowDetailLink(item) && (
-                          <Button variant="dark">
-                            <Nav.Link
-                              as={Link}
-                              to={`/products/${encodeURIComponent(item)}`}
-                            >
-                              Detaylı Bilgi
-                            </Nav.Link>
-                          </Button>
-                        )}
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                ))}
-              </Row>
-            )}
-          </Container>
-        </div>
+                  {openCategory === categoryName && (
+                    <div className="product-list">
+                      {Array.isArray(product[categoryName])
+                        ? (product[categoryName] as string[]).map(
+                            (item, idx) => (
+                              <div className="category-item" key={idx}>
+                                {shouldShowDetailLink1(item) ? (
+                                  <p>{item}</p>
+                                ) : (
+                                  <span>{item}</span>
+                                )}
+                              </div>
+                            )
+                          )
+                        : Object.entries(
+                            product[categoryName] as {
+                              [key: string]: string[];
+                            }
+                          ).map(([subCategory, items]) => (
+                            <div key={subCategory}>
+                              <b>{subCategory}</b>
+                              {items.map((item, idx) => (
+                                <Nav.Link className="category-item" key={idx}>
+                                  {item}
+                                </Nav.Link>
+                              ))}
+                            </div>
+                          ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
-    </>
+      <div className="output h-100">
+        <Container>
+          <h5 className="mt-3 text-center">
+            {selectedCategory ? selectedCategory.toUpperCase() : "Ürünler"}
+          </h5>
+          {selectedCategory === "Otomasyon Çözümleri" ? (
+            <div className="otomasyon-content mt-4 text-center">
+              <p>
+                Otomasyon çözümlerimiz hakkında detaylı bilgi için PDF'i
+                indirebilirsiniz.
+              </p>
+              <Button onClick={handleDownloadPDF} variant="primary">
+                PDF İndir
+              </Button>
+            </div>
+          ) : (
+            <Row className="mt-5">
+              {categoryItems.map((item, index) => (
+                <Col sm={12} md={12} lg={4} key={index} className="mb-4">
+                  <Card style={{ width: "18rem" }}>
+                    <Card.Img
+                      className="ms-5"
+                      variant="top"
+                      style={{
+                        width: getImageWidth(item),
+                        height: "150px",
+                        objectFit: "contain",
+                      }}
+                      src={
+                        productImages[item] ||
+                        `https://via.placeholder.com/300x200?text=${item}`
+                      }
+                    />
+                    <Card.Body>
+                      <Card.Title>{item}</Card.Title>
+                      <Card.Text>
+                        {productDescriptions[item] ||
+                          "Bu ürün hakkında bilgi mevcut değil."}
+                      </Card.Text>
+                      {shouldShowDetailLink(item) && (
+                        <Button variant="dark">
+                          <Nav.Link
+                            as={Link}
+                            to={`/products/${encodeURIComponent(item)}`}
+                          >
+                            Detaylı Bilgi
+                          </Nav.Link>
+                        </Button>
+                      )}
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          )}
+        </Container>
+      </div>
+    </div>
+  </>
   );
 };
 
