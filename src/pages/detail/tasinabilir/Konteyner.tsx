@@ -1,18 +1,27 @@
-import { Col, Container, Row, Table } from "react-bootstrap";
+import { Card, Col, Container, Row, Table } from "react-bootstrap";
 import konteyner1 from "../../../images/araclar/konteynır tipi.png";
 import konteyner2 from "../../../images/araclar/konteyner tipi1.png";
 import konteyner3 from "../../../images/araclar/15e1c776f33da5.png";
+import pompa from "../../../images/araclar/pompasd.jpg";
+import pano from "../../../images/araclar/yakıtkontrol.png";
+import jenerator from "../../../images/araclar/jeneraotr.jpeg";
+import transfer from "../../../images/araclar/transfer unitesi.png";
+import yangin from "../../../images/araclar/yangın algılama.png";
+import kacak from "../../../images/araclar/kacak algilama.png";
+import solar from "../../../images/araclar/solar.png";
+import dispenser from "../../../images/araclar/2 serisi 2-Photoroom.png";
 import { SiBlackmagicdesign } from "react-icons/si";
 import { IoBuild } from "react-icons/io5";
-import { FaToiletsPortable } from "react-icons/fa6";
+import { FaToiletsPortable, FaPersonMilitaryPointing } from "react-icons/fa6";
 import { GiHornInternal } from "react-icons/gi";
-import { MdOutlineSecurity } from "react-icons/md";
 import { BsBuildingGear } from "react-icons/bs";
-import { MdAgriculture } from "react-icons/md";
-import { FaPersonMilitaryPointing } from "react-icons/fa6";
 import { IoIosTrain } from "react-icons/io";
-import { MdEmergency } from "react-icons/md";
-import { MdOutlineTravelExplore } from "react-icons/md";
+import {
+  MdEmergency,
+  MdOutlineTravelExplore,
+  MdAgriculture,
+  MdOutlineSecurity,
+} from "react-icons/md";
 import "./style.css";
 
 const data1 = [
@@ -162,12 +171,11 @@ const Konteyner = () => {
             </p>
           </Col>
 
-          
-
           <Col
             md={6}
             className="mt-5 d-flex flex-column justify-content-center"
           >
+            <h2>Kullanım Alanları</h2>
             <div className="main d-flex align-items-center gap-3 mt-2">
               <BsBuildingGear
                 className="icon icon-6"
@@ -288,20 +296,26 @@ const Konteyner = () => {
                 className="icon icon-1"
                 style={{ fontSize: "60px" }}
               />
-              <span>
-                Konteynerler ve yakıt tankları , ihtiyaca göre farklı boyutlarda
-                ve yapılandırmalarda üretilebilir. Bu, istasyonun kapasitesini
-                ve işlevselliğini artırır.
-              </span>
+              <div>
+                <b>Modüler Tasarım: </b>
+                <span>
+                  Konteynerler ve yakıt tankları , ihtiyaca göre farklı
+                  boyutlarda ve yapılandırmalarda üretilebilir. Bu, istasyonun
+                  kapasitesini ve işlevselliğini artırır.
+                </span>
+              </div>
             </div>
 
             <div className="main d-flex align-items-center gap-3 mt-2">
               <IoBuild className="icon icon-2" style={{ fontSize: "50px" }} />
-              <span>
-                Konteyner tipi istasyonlar, sahada hızlı bir şekilde
-                kurulabilir. Montajı kolaydır ve genellikle aynı gün içinde
-                hizmete alınabilir.
-              </span>
+              <div>
+                <b>Hızlı Kurulum: </b>
+                <span>
+                  Konteyner tipi istasyonlar, sahada hızlı bir şekilde
+                  kurulabilir. Montajı kolaydır ve genellikle aynı gün içinde
+                  hizmete alınabilir.
+                </span>
+              </div>
             </div>
 
             <div className="main d-flex align-items-center gap-3 mt-2">
@@ -309,11 +323,14 @@ const Konteyner = () => {
                 className="icon icon-3"
                 style={{ fontSize: "50px" }}
               />
-              <span>
-                Bu tür istasyonlar, deniz, tır ve demiryolları taşımacılığına
-                uygun CSC ve BIC Code standartları ile ihtiyaç duyulan yere
-                kolayca taşınabilir .
-              </span>
+              <div>
+                <b>Taşınabilirlik: </b>
+                <span>
+                  Bu tür istasyonlar, deniz, tır ve demiryolları taşımacılığına
+                  uygun CSC ve BIC Code standartları ile ihtiyaç duyulan yere
+                  kolayca taşınabilir .
+                </span>
+              </div>
             </div>
 
             <div className="main d-flex align-items-center gap-3 mt-2">
@@ -321,11 +338,14 @@ const Konteyner = () => {
                 className="icon icon-4"
                 style={{ fontSize: "60px" }}
               />
-              <span>
-                Firmanızın ihtiyaçlarını EN 12285 2 ve UL142 ile en yüksek
-                seviyede standartlarla karşılamaktayız. SGS, INTERTEK, TURK
-                LOYDU gibi 3. Parti gözetim hizmetlerini de sunmaktayız.
-              </span>
+              <div>
+                <b>Tümleşik Sistemler: </b>
+                <span>
+                  Firmanızın ihtiyaçlarını EN 12285 2 ve UL142 ile en yüksek
+                  seviyede standartlarla karşılamaktayız. SGS, INTERTEK, TURK
+                  LOYDU gibi 3. Parti gözetim hizmetlerini de sunmaktayız.
+                </span>
+              </div>
             </div>
 
             <div className="main d-flex align-items-center gap-3 mt-2">
@@ -333,14 +353,17 @@ const Konteyner = () => {
                 className="icon icon-5"
                 style={{ fontSize: "90px" }}
               />
-              <span>
-                Modern konteyner tipi istasyonlar, çevreye duyarlı; sızıntı,
-                yangın , yıldırım, deprem ve patlama gibi risklere karşı çeşitli
-                güvenlik önlemleri ile donatılmıştır. Yangın söndürme
-                sistemleri, sızıntı algılama sistemleri ve acil durum
-                prosedürleri gibi özellikler içerir. İş Güvenliği Mevzuatına
-                uygun üretim yapılmaktadır.
-              </span>
+              <div>
+                <b>Uluslararası Standartlar: </b>
+                <span>
+                  Modern konteyner tipi istasyonlar, çevreye duyarlı; sızıntı,
+                  yangın , yıldırım, deprem ve patlama gibi risklere karşı
+                  çeşitli güvenlik önlemleri ile donatılmıştır. Yangın söndürme
+                  sistemleri, sızıntı algılama sistemleri ve acil durum
+                  prosedürleri gibi özellikler içerir. İş Güvenliği Mevzuatına
+                  uygun üretim yapılmaktadır.
+                </span>
+              </div>
             </div>
           </Col>
           <Col md={6} className="mt-5 d-flex justify-content-center">
@@ -394,9 +417,9 @@ const Konteyner = () => {
           </Col>
         </Row>
         <Row className="mt-5">
-          <Col sm={12} className="d-flex justify-content-center mt-5">
+          <Col md={6} sm={12} className="d-flex justify-content-center mt-5">
             <ul className="text-center">
-              <h2>STANDART ÖZELLİKLER</h2>
+              <h2>OPSİYONEL ÖZELLİKLER</h2>
               <li>Yakıt Seviye Göstergesi</li>
               <li>Manhole (kilitleme özelliğine sahip)</li>
               <li>ATEX Aydınlatma</li>
@@ -407,8 +430,133 @@ const Konteyner = () => {
               <li>Merdiven</li>
             </ul>
           </Col>
-          <Col sm={12}>
+          <Col md={6} sm={12}>
             <img src={konteyner3} className="img-fluid" />
+          </Col>
+        </Row>
+
+        <h2 className="text-center mt-5">
+          SAVEL SEYYAR İSTASYON SİSTEM BİLEŞENLERİ
+        </h2>
+        <Row className="mt-5">
+          <Col>
+            <Card style={{ width: "18rem" }}>
+              <div className="w-100 d-flex justify-content-center">
+                <img src={pompa} style={{ width: "100px", height: "100px" }} />
+              </div>
+              <Card.Body>
+                <Card.Title>Akaryakıt Pompası</Card.Title>
+                <Card.Text>
+                  Akaryakıt pompası ve pompa odasından görünüm
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col>
+            <Card style={{ width: "18rem" }}>
+              <div className="w-100 d-flex justify-content-center">
+                <img src={pano} style={{ width: "100px", height: "100px" }} />
+              </div>
+              <Card.Body>
+                <Card.Title>Elektrik Panosu</Card.Title>
+                <Card.Text>
+                  Tank seviye göstergeli, acil stop butonlu elektrik kontrol
+                  panosu
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col>
+            <Card style={{ width: "18rem" }}>
+              <div className="w-100 d-flex justify-content-center">
+                <img
+                  src={jenerator}
+                  style={{ width: "100px", height: "100px" }}
+                />
+              </div>
+              <Card.Body>
+                <Card.Title>Jeneratör</Card.Title>
+                <Card.Text>
+                  İhtiyaca göre güç seçenekleri sunulan Dizel veya Benzinli
+                  Jeneratör
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col>
+            <Card style={{ width: "18rem" }}>
+              <div className="w-100 d-flex justify-content-center">
+                <img
+                  src={dispenser}
+                  style={{ width: "100px", height: "100px" }}
+                />
+              </div>
+              <Card.Body>
+                <Card.Title>Akaryakıt Pompası</Card.Title>
+                <Card.Text>Hızlı yakıt dağıtımı için güçlü dispenser</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <Card style={{ width: "18rem" }}>
+              <div className="w-100 d-flex justify-content-center">
+                <img src={yangin} style={{ width: "100px", height: "100px" }} />
+              </div>
+              <Card.Body>
+                <Card.Title>Güvenlik Ekipmanları</Card.Title>
+                <Card.Text>Yangın algılama ve söndürme sistem leri</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col>
+            <Card style={{ width: "18rem" }}>
+              <div className="w-100 d-flex justify-content-center">
+                <img src={kacak} style={{ width: "100px", height: "100px" }} />
+              </div>
+              <Card.Body>
+                <Card.Title>Kaçak Algılama Sistemi</Card.Title>
+                <Card.Text>
+                  Tank cidarından algılama yapan LCU - 2 kaçak algılama sistemi
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col>
+            <Card style={{ width: "18rem" }}>
+              <div className="w-100 d-flex justify-content-center">
+                <img
+                  src={transfer}
+                  style={{ width: "100px", height: "100px" }}
+                />
+              </div>
+              <Card.Body>
+                <Card.Title>Transfer Ünitesi</Card.Title>
+                <Card.Text>Dolum Odası ve Transfer Seti görünümü</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col>
+            <Card style={{ width: "18rem" }}>
+              <div className="w-100 d-flex justify-content-center">
+                <img src={solar} style={{ width: "100px", height: "100px" }} />
+              </div>
+              <Card.Body>
+                <Card.Title>Solar Sistem</Card.Title>
+                <Card.Text>
+                  İhtiyaca göre güç seçenekleri sunulan Güneş Enerjisi kaynaklı
+                  enerji
+                </Card.Text>
+              </Card.Body>
+            </Card>
           </Col>
         </Row>
       </Container>

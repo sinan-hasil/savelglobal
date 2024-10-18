@@ -16,6 +16,7 @@ import Jenerator from "./Tanklar/Jenerator";
 import Yakitkontrol from "./endüstriyel/Yakitkontrol";
 import Istasyonkurulum from "./endüstriyel/Istasyonkurlum";
 import Projedanismanlik from "./endüstriyel/Projedanismanlik";
+import Silindirtip from "./tasinabilir/Silindirtip";
 
 const ProductDetail = () => {
   const { productName } = useParams<{ productName: string }>();
@@ -28,6 +29,8 @@ const ProductDetail = () => {
         return <RomorkTipi />;
       case "LPG Skid Sistem":
         return <LpgSkid />;
+      case "Silindir Tip":
+        return <Silindirtip />;
       case "1 Serisi Akaryakıt Pompası":
         return <Seri1 />;
       case "3 Serisi Akaryakıt Pompası":
@@ -54,8 +57,8 @@ const ProductDetail = () => {
         return <Yakitkontrol />;
       case "İstasyon Kurulumu":
         return <Istasyonkurulum />;
-        case "Proje Danışmanlık ve Mühendislik":
-          return <Projedanismanlik />
+      case "Proje Danışmanlık ve Mühendislik":
+        return <Projedanismanlik />;
       default:
         return <div>Ürün bulunamadı</div>;
     }

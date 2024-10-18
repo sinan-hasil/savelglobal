@@ -5,7 +5,7 @@ import konteyner2 from "../../../images/araclar/DSCN3670-Photoroom.png";
 const LpgSskid = () => {
   return (
     <>
-      <Container>
+      <Container className="py-5">
         <h1 className="text-center mb-5">LPG Skid Sistem</h1>
         <Row>
           <Col md={6} className="d-flex justify-content-center">
